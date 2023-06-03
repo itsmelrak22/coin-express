@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--?xml version="1.0" encoding="utf-8"?-->
+
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="_x32_"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 512"
+   style="width: 512px; height: 512px; opacity: 1;"
+   xml:space="preserve"
+   sodipodi:docname="記事アイコン3.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:export-filename="C:\Users\h-moriyama\★Folder\02_共通データ\カスタマイズ (iconn)\アイコンシステムデザイン\アイコン\記事アイコン3.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"><metadata
+   id="metadata21"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs19" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1320"
+   inkscape:window-height="813"
+   id="namedview17"
+   showgrid="false"
+   inkscape:zoom="0.4609375"
+   inkscape:cx="256"
+   inkscape:cy="256"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="_x32_" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#4B4B4B;}
+</style>
+<g
+   id="g14"
+   style="fill:#227093;fill-opacity:1">
+	<rect
+   x="106.667"
+   y="106.667"
+   class="st0"
+   width="298.666"
+   height="106.666"
+   style="fill:#227093;fill-opacity:1"
+   id="rect4" />
+	<path
+   class="st0"
+   d="M0,0v512h512V0H0z M458.667,458.667H53.333V53.333h405.334V458.667z"
+   style="fill:#227093;fill-opacity:1"
+   id="path6" />
+	<rect
+   x="256"
+   y="277.333"
+   class="st0"
+   width="149.333"
+   height="32"
+   style="fill:#227093;fill-opacity:1"
+   id="rect8" />
+	<rect
+   x="256"
+   y="362.667"
+   class="st0"
+   width="149.333"
+   height="32"
+   style="fill:#227093;fill-opacity:1"
+   id="rect10" />
+	<rect
+   x="106.667"
+   y="277.333"
+   class="st0"
+   width="106.666"
+   height="117.334"
+   style="fill:#227093;fill-opacity:1"
+   id="rect12" />
+</g>
+</svg>

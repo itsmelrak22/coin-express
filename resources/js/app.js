@@ -1,0 +1,47 @@
+require('./bootstrap');
+require('./dialog_movable');
+import 'vuetify/dist/vuetify.css';
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import Router from './router'
+import store from './store'
+import App from './template/App';
+import MasterApp from './template/MasterApp';
+import Login from './auth/Login';
+import VueDragscroll from 'vue-dragscroll' 
+import io from 'socket.io-client';
+
+const socket = io("https://iconntest.hrd-s.com",{
+    transports: ["websocket"]
+});
+
+Vue.prototype.$socket = socket;
+import VueSocketIO from 'vue-socket.io'
+
+Vue.use(new VueSocketIO({
+    // debug: false,
+    connection: io('https://iconntest.hrd-s.com', {
+        transports: ["websocket"]
+    }), //options object is Optional
+    vuex: {
+        store,
+        actionPrefix: "SOCKET_",
+        mutationPrefix: "SOCKET_"
+        }
+    })
+);
+
+
+Vue.use(VueDragscroll)
+Vue.use(Vuetify)
+new Vue({
+    el: '#app',
+    store,
+    router:Router,
+    vuetify: new Vuetify(),
+    components : {
+        App,
+        Login,
+        MasterApp
+    }
+});

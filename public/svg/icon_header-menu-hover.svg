@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--?xml version="1.0" encoding="utf-8"?-->
+
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="_x32_"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 512"
+   style="width: 512px; height: 512px; opacity: 1;"
+   xml:space="preserve"
+   sodipodi:docname="icon_header-menu-hover.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:export-filename="C:\Users\h-moriyama\★Folder\02_共通データ\カスタマイズ (iconn)\アイコンシステムデザイン\アイコン\PNG\icon_header-menu-hover.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"><metadata
+   id="metadata13"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+   id="defs11"><linearGradient
+     id="linearGradient822"
+     osb:paint="solid"><stop
+       style="stop-color:#000000;stop-opacity:1;"
+       offset="0"
+       id="stop820" /></linearGradient><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient822"
+     id="linearGradient824"
+     x1="0"
+     y1="256"
+     x2="512"
+     y2="256"
+     gradientUnits="userSpaceOnUse" /></defs><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="695"
+   inkscape:window-height="479"
+   id="namedview9"
+   showgrid="false"
+   inkscape:zoom="0.4609375"
+   inkscape:cx="-106.30508"
+   inkscape:cy="256"
+   inkscape:window-x="190"
+   inkscape:window-y="1415"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="_x32_" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#4B4B4B;}
+</style>
+<g
+   id="g6"
+   style="fill:#2980b9;fill-opacity:1">
+	<path
+   class="st0"
+   d="M256,0C114.617,0,0,114.61,0,256c0,141.375,114.617,256,256,256c141.382,0,256-114.625,256-256   C512,114.61,397.382,0,256,0z M197.172,373.641h-58.821v-58.812h58.821V373.641z M197.172,285.406h-58.821v-58.828h58.821V285.406z    M197.172,197.172h-58.821V138.36h58.821V197.172z M285.406,373.641h-58.813v-58.812h58.813V373.641z M285.406,285.406h-58.813   v-58.828h58.813V285.406z M285.406,197.172h-58.813V138.36h58.813V197.172z M373.641,373.641h-58.813v-58.812h58.813V373.641z    M373.641,285.406h-58.813v-58.828h58.813V285.406z M373.641,197.172h-58.813V138.36h58.813V197.172z"
+   style="fill:#2980b9;fill-opacity:1"
+   id="path4" />
+</g>
+</svg>

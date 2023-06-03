@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46666"
+   version="1.1"
+   id="svg848"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="icon_file-disable_olg.svg">
+  <defs
+     id="defs842" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.5429688"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     inkscape:window-x="-9"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     units="px"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true" />
+  <metadata
+     id="metadata845">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-161.53336)">
+    <path
+       style="opacity:1;fill:#d9d9d9;stroke-width:1.00643253;fill-opacity:1"
+       d="M 211.78711 0 L 211.78711 125.10352 C 211.78711 138.90348 200.40756 150.14648 186.4375 150.14648 L 60 150.14648 L 60 491.57812 L 60 491.58594 C 60.003235 502.84205 69.280582 512 80.673828 512 L 431.32617 512 C 442.71941 512 451.99679 502.8422 452 491.58594 L 452 491.57812 L 452 150.14648 L 452 20.404297 C 452 9.1523404 442.72243 0 431.32617 0 L 211.78711 0 z M 206.80859 192 C 206.91419 191.9994 218.22716 203.199 231.94922 216.88867 L 256.89844 241.7793 L 281.08398 217.44922 C 294.38623 204.06704 305.37294 193.12069 305.49805 193.125 C 305.80374 193.13634 336 223.3474 336 223.64258 C 336 223.76995 335.22613 224.63798 334.28125 225.57031 C 333.33637 226.50272 322.45279 237.44788 310.0957 249.89258 L 287.62891 272.51758 L 311.81445 296.76758 C 325.11645 310.10447 335.99457 321.09831 335.98828 321.19922 C 335.98223 321.29975 329.14874 328.27179 320.80273 336.69141 L 305.62891 352 L 281.29492 327.67578 C 267.91204 314.29792 256.86579 303.35352 256.74609 303.35352 C 256.62628 303.35352 247.44013 312.41665 236.33398 323.49414 C 225.2007 334.5987 218.02195 341.69757 213.51172 346.01953 C 209.00149 350.34149 207.16007 351.88674 206.70508 351.88672 C 206.53156 351.88672 205.54077 351.16198 204.50195 350.27734 C 203.46317 349.39271 201.13959 347.29468 199.33984 345.61328 C 194.60027 341.18541 176.08619 322.81929 176.16211 322.62109 C 176.19764 322.52887 187.35122 311.25707 200.94727 297.57227 C 214.54327 283.88743 225.70414 272.58799 225.75 272.46289 C 225.79581 272.33779 214.62028 261.01205 200.91602 247.29297 L 176 222.34766 L 191.30859 207.17383 C 199.72815 198.82829 206.70312 192.00057 206.80859 192 z "
+       id="path12"
+       transform="matrix(0.26458332,0,0,0.26458332,0,161.53336)" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4"
+       style="fill:#d9d9d9;stroke-width:0.26628527;fill-opacity:1"
+       d="M 49.785705,190.92027 V 163.16769 L 17.45618,195.08692 h 28.108809 c 3.038037,0 4.220716,-1.1676 4.220716,-4.16665 z"
+       class="st0" />
+  </g>
+  <style
+     id="style2"
+     type="text/css">
+	.st0{fill:#4B4B4B;}
+</style>
+  <style
+     id="style2-0"
+     type="text/css">
+	.st0{fill:#4B4B4B;}
+</style>
+</svg>

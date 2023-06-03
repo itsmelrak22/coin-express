@@ -1,0 +1,1364 @@
+
+/*=====================================================*/
+/*				           Variables                       */
+/*=====================================================*/
+
+$sass_dir: '/cad_request';
+
+/*=====================================================*/
+/*				              Root                         */
+/*=====================================================*/
+
+/*----- set default font-family ----- */
+#app{
+   font-family: 'Arial';
+}
+
+.v-main{
+   background-color: #ffffff;
+}
+
+/*----- set default font-family ----- */
+.container-main{
+   max-width: 100% !important;
+}
+
+.row {
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+ }
+ 
+/*=====================================================*/
+/*				          title page                       */
+/*=====================================================*/
+
+.title-page.v-list-item{
+   padding:0px !important;
+}
+
+.title-page .v-list-item__subtitle{
+   font-size: 12px !important;
+}
+
+.title-page .v-list-item__content{
+   padding: 8px 0px;
+}
+
+/*=====================================================*/
+/*				             drawer                        */
+/*=====================================================*/
+
+.project_search .v-input__control > .v-input__slot{
+   min-height: 32px;
+}
+
+.project_search .v-input__control .v-input__append-inner{
+   margin-top: 4px
+}
+
+.project_search .v-input__control .v-text-field__slot .v-label{
+   top: 6px
+}
+
+.project_search .v-input__control .v-text-field__slot .v-label--active{
+   transform: translateY(-12px) scale(.75)
+}
+.v-navigation-drawer {
+    will-change: initial;
+}
+/*=====================================================*/
+/*				          v-breadcrumbs                    */
+/*=====================================================*/
+
+.v-breadcrumbs{
+   font-size: 12px;
+}
+
+.v-breadcrumbs .v-icon{
+   font-size: 14px;
+}
+/*----- td canceled----- */
+
+.td_cancelled{
+
+    color:#D3D3D3 !important;
+ }
+
+
+/*=====================================================*/
+/*				           v-dialog                        */
+/*=====================================================*/
+
+/*----- sticky header ----- */
+.v-dialog .v-card__title {
+   position: sticky;
+   top: 0;
+   z-index: 999;
+}
+
+
+/*----- dialog title ----- */
+.v-dialog .v-card .v-card__title{
+   background: #455A64 !important;
+   color: #ffffff !important;
+   padding: 4px 16px !important;
+}
+
+/*----- dialog text ----- */
+.v-dialog .v-card .v-card__text{
+   padding-bottom: 0px !important;
+}
+
+/*----- dialog header ----- */
+.v-dialog .v-card .v-card__title > .headline{
+   font-size: 16px !important;
+}
+
+.v-dialog .headline{
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.v-dialog > .v-card > .v-card__subtitle, .v-dialog > .v-card > .v-card__text{
+   padding: 0 !important;
+}
+
+/*----- dialog container ----- */
+.v-dialog .container{
+   background: #ffffff !important;
+   padding: 0px !important;
+}
+
+/*----- dialog movable ----- */
+.v-dialog.v-dialog--active .v-card__title {
+   cursor: grab !important;
+}
+
+.v-dialog.v-dialog--active .v-card__title:active {
+   cursor: grabbing !important;
+}
+
+.v-dialog .row [class*="col"]{
+   padding: 0px 8px !important;
+}
+
+.v-dialog .row{
+   margin-top:16px !important;
+}
+
+.v-dialog .v-input__append-inner{
+   margin-top: 8px;
+}
+
+.v-dialog .v-text-field--outlined .v-label{
+   top: 12px !important;
+}
+
+.v-dialog .v-input--selection-controls{
+   margin-top: 4px !important;
+}
+
+.v-dialog .v-subheader{
+   height:20px !important;
+}
+
+.v-dialog .dropzone{
+   line-height: 250px;
+   height: 250px;
+   border: 2px solid rgba(0, 0, 0, 0.3);
+   text-align: center;
+}
+
+.v-dialog .required .v-text-field__slot label::before,.v-dialog .required .v-select__slot label::before {
+   content: '* ';
+   color: red;
+}
+
+.v-dialog .optional .v-text-field__slot label::before,.v-dialog .optional .v-select__slot label::before {
+    content: '# ';
+    color: green;
+ }
+
+.uppercase-value input{
+    text-transform: uppercase;
+}
+/*=====================================================*/
+/*				         v-role-Table                    */
+/*=====================================================*/
+/*----- table zibra striped ----- */
+.v-data-table tbody tr:nth-child(even) {
+   background-color:#fafafa;
+}
+
+/*----- table default height ----- */
+.v-data-table td,.v-data-table th{
+   height: 50px !important;
+}
+
+/*----- table mobile margin ----- */
+.v-data-table.mb4 table{
+   margin-bottom: 16px !important;
+}
+
+/*----- table thead color ----- */
+.v-data-table.rolesTable th{
+   background: #34495e !important;
+   color:white !important;
+}
+
+/*----- home quick panel header link ----- */
+.quick-panel-header {
+   color: #333333 !important;
+   text-decoration: underline;
+}
+
+.quick-panel-header:hover {
+   color: #1967d2 !important;
+   text-decoration: none;
+}
+
+/*----- table link ----- */
+.v-data-table.rolesTable tbody a:link{
+   color: #333333;
+   text-decoration: underline;
+}
+
+.v-data-table.rolesTable tbody a:link:hover{
+   color: #BBDEFB;
+   text-decoration: none;
+}
+
+/*----- table visited ----- */
+.v-data-table.rolesTable tbody a:visited {
+   color: #8E44AD;
+   text-decoration: underline;
+}
+
+
+/*=====================================================*/
+/*				         v-simple-table                    */
+/*=====================================================*/
+/*----- table zibra striped ----- */
+.v-data-table tbody tr:nth-child(even) {
+   background-color:#fafafa;
+}
+
+/*----- table default height ----- */
+.v-data-table td,.v-data-table th{
+   height: 40px !important;
+}
+
+/*----- table mobile margin ----- */
+.v-data-table.mb4 table{
+   margin-bottom: 16px !important;
+}
+
+/*----- table thead color ----- */
+.v-data-table.mainTable th{
+   background: #34495e !important;
+   color:white !important;
+}
+
+/*----- home quick panel header link ----- */
+.quick-panel-header {
+   color: #333333 !important;
+   text-decoration: underline;
+}
+
+.quick-panel-header:hover {
+   color: #1967d2 !important;
+   text-decoration: none;
+}
+
+/*----- table link ----- */
+.v-data-table.mainTable tbody a:link{
+   color: #333333;
+   text-decoration: underline;
+}
+
+.v-data-table.mainTable tbody a:link:hover{
+   color: #1967d2;
+   text-decoration: none;
+}
+
+/*----- table visited ----- */
+.v-data-table.mainTable tbody a:visited {
+   color: #8E44AD;
+   text-decoration: underline;
+}
+
+tbody tr.active-row {
+   background: #e7effd !important;
+   color: #1866d1;
+}
+
+
+.v-data-table--fixed-header .v-input__slot{
+   margin-bottom: 0px !important;
+}
+
+.v-data-table--fixed-header .v-input--checkbox{
+   margin-top:0px !important;
+   padding-top: 0px !important;
+}
+
+.v-data-table--fixed-header .v-input--selection-controls__input{
+   margin-right: 0px !important;
+}
+
+.v-data-table--fixed-header .v-input--selection-controls__ripple{
+   margin: 0px !important;
+   height: 0px !important;
+   left: 0px !important;
+}
+
+.v-data-table--fixed-header .v-messages.theme--light{
+   display: none !important;
+}
+
+.v-data-table--fixed-header thead tr:nth-child(2) th{
+   top: 40px !important;
+}
+
+.v-data-table--fixed-header thead tr:nth-child(3) th{
+   top: 80px !important;
+}
+
+.sched-tbl.v-data-table--fixed-header thead tr:nth-child(2) th{
+   top: 92px !important;
+}
+
+.v-data-table--fixed-header thead tr:nth-child(2) th .v-input__slot,
+.v-data-table--fixed-header thead tr:nth-child(3) th .v-input__slot{
+   min-height: 28px !important;
+   max-height: 28px !important;
+   margin-bottom: 0px !important;
+   font-size: 12px;
+}
+
+.v-data-table--fixed-header thead tr:nth-child(2) th .v-text-field__details,
+.v-data-table--fixed-header thead tr:nth-child(3) th .v-text-field__details{
+   display: none;
+}
+
+.v-data-table--fixed-header thead tr:nth-child(2) th .v-text-field input,
+.v-data-table--fixed-header thead tr:nth-child(3) th .v-text-field input{
+   padding: 0px !important;
+}
+
+.v-data-table--fixed-header thead tr:nth-child(2) th .v-text-field.v-text-field--solo .v-input__control,
+.v-data-table--fixed-header thead tr:nth-child(3) th .v-text-field.v-text-field--solo .v-input__control{
+   min-height: 0px !important;
+}
+/*----- table header border left,right ----- */
+.v-data-table th{
+   border-left: 1px solid #d9d9d9 !important;
+   border-right: 1px solid #d9d9d9 !important;
+}
+/*----- table no shrink text  ----- */
+.v-data-table th,.v-data-table td{
+   white-space: nowrap !important;
+   font-size: 12px !important;
+}
+
+/*----- table sortable  ----- */
+th.Sortable{
+   cursor:pointer;
+}
+
+/*----- table sortable Icon  ----- */
+th.Sortable:after {
+   content: '\2003\2003';
+   position:absolute;
+   margin-left:4px;
+}
+
+th.Sortable.ASC::after{
+   font-family: 'Material Design Icons';
+   content: "\F045\2003";
+   font-weight: 400;
+   display: inline-block;
+}
+
+th.Sortable.DESC::after{
+   font-family: 'Material Design Icons';
+   content: "\F05D\2003";
+   font-weight: 400;
+   display: inline-block;
+}
+
+th.Filtered::after{
+   font-family: 'Material Design Icons';
+   content: "\F232\2003";
+   font-weight: 400;
+   display: inline-block;
+}
+
+th.Filtered.Sortable.Asc::after{
+   font-family: 'Material Design Icons';
+   content: "\F232\F045";
+   font-weight: 400;
+   display: inline-block;
+}
+
+th.Filtered.Sortable.Desc::after{
+   font-family: 'Material Design Icons';
+   content: "\F232\F05D";
+   font-weight: 400;
+   display: inline-block;
+}
+
+.v-data-table--fixed-header tbody .tr-active{
+   background: #e8f0fe !important;
+   color: #1967d2 !important;
+}
+
+.theme--light.v-data-table.v-data-table--fixed-header thead th{
+   box-shadow:none;
+}
+
+tr.records{
+   vertical-align: top;
+}
+
+.show-records {
+   font-size: 10px;
+}
+
+.mainTable tr.records:hover{
+   background: #ffffff !important;
+}
+
+.rolesTable tr.records:hover{
+   background: #ffffff !important;
+}
+
+.v-menu__content{
+   background: #ffffff !important;
+}
+
+.v-menu__content .v-list{
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
+ }
+
+tr.inactive{
+   background:#999999 !important;
+   color:#ffffff !important;
+}
+
+tr.memo-old a{
+   color:#ffffff !important;
+}
+
+tbody tr.active-row {
+    background: #BBDEFB !important;
+    color: #000 !important;
+}
+/*=====================================================*/
+/*				          v-snackbar                       */
+/*=====================================================*/
+.v-snack__wrapper{
+   min-width: 10%;
+}
+
+
+/*=====================================================*/
+/*				     Responsive Mobile                     */
+/*=====================================================*/
+
+@media (max-width: 768px) {
+
+   // header .app-home{
+   //    display:none !important;
+   // }
+
+   // header .row{
+   //    margin-right: 0px !important;
+   // }
+
+   .v-btn--fab{
+      bottom: 12px !important;
+   }
+
+   .v-menu__content.mega-menu{
+      top: 56px !important;
+      height: 300px !important;
+   }
+
+}
+
+/*=====================================================*/
+/*				         Custom style                      */
+/*=====================================================*/
+
+.default{
+   cursor: default;
+}
+
+.pointer{
+   cursor: pointer;
+}
+
+.grab{
+   cursor: grab;
+}
+
+.grab:active{
+   cursor: grabbing;
+}
+.no-drop{
+   cursor: no-drop;
+}
+.move {
+   cursor: move;
+}
+
+.text-ellipsis{
+   white-space: nowrap;
+   max-width: 150px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.memo_actions, .document_actions{
+   padding: 0px !important;
+}
+
+.memo_actions div, .document_actions div{
+   margin: 0px 3px;
+}
+/*=====================================================*/
+/*				       Home Panels                     */
+/*=====================================================*/
+
+.move:hover {
+    color: #42A5F5;
+}
+
+
+/*=====================================================*/
+/*				           Custom Svg                      */
+/*=====================================================*/
+
+/*----- edit svg  ----- */
+.svg-edit_icon{
+   height: 24px !important;
+   width: 24px !important;
+   background: url('icons/edit_icon.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+.svg-icon_edit{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_edit.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_edit:hover{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_edit-hover.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_edit_disabled{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_edit-disable.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+/*----- csv svg  ----- */
+.svg-icon_csv_file {
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_csv_file.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+.svg-icon_file-csv-dl {
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_file-csv-dl.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+.svg-icon_file-csv-dl:hover{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_file-csv-dl-hover.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+/*----- pdf svg  ----- */
+.svg-icon_pdf{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_file-pdf-a.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_pdf:hover{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_file-pdf-a-hover.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+/*----- pdf svg attachment ----- */
+
+.svg-icon_pdf_attach{
+   height: 48px !important;
+   width: 48px !important;
+   margin-left: 4px;
+   background: url($sass_dir+'/svg/icon_file-pdf-a.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_pdf_attach:hover{
+   height: 48px !important;
+   width: 48px !important;
+   background: url($sass_dir+'/svg/icon_file-pdf-a-hover.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_pdf_hover{
+    height: 24px !important;
+    width: 24px !important;
+    background: url($sass_dir+'/svg/icon_file-pdf-a-hover.svg') no-repeat center !important;
+    display: inline-block !important;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.svg-icon_pdf_disabled{
+    height: 24px !important;
+    width: 24px !important;
+    background: url($sass_dir+'/svg/icon_file-pdf-a-disable.svg') no-repeat center !important;
+    display: inline-block !important;
+    cursor: pointer;
+    vertical-align: middle;
+ }
+
+/*----- no file svg  ----- */
+.svg-icon_nofile{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_file-disable.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+/*----- history svg  ----- */
+
+.svg-icon_history{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_history.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_history:hover{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_history-hover.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+
+/*----- history disable svg  ----- */
+.svg-icon_history_disabled{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_history-disable.svg') no-repeat center !important;
+   display: inline-block !important;
+   vertical-align: middle;
+}
+
+/*----- printer svg  ----- */
+.svg-icon_printer{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_printer.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_printer:hover{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_printer-hover.svg') no-repeat center !important;
+   display: inline-block !important;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_printer_disabled{
+   height: 24px !important;
+   width: 24px !important;
+   background: url($sass_dir+'/svg/icon_printer-disable.svg') no-repeat center !important;
+   display: inline-block !important;
+   vertical-align: middle;
+}
+
+/*----- pdf download svg  ----- */
+.svg-icon_pdf_download{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_file-pdf-dl.svg') no-repeat center !important;
+   display: inline-block;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_pdf_download:hover{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_file-pdf-dl-hover.svg') no-repeat center !important;
+   display: inline-block;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_pdf_download_disabled{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_file-pdf-dl-disable.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+/*----- dwg download svg  ----- */
+.svg-icon_dwg_download{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_file-dwg-dl.svg') no-repeat center !important;
+   display: inline-block;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_dwg_download:hover{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_file-dwg-dl-hover.svg') no-repeat center !important;
+   display: inline-block;
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.svg-icon_dwg_download_disabled{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_file-dwg-dl-disable.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+/*----- no file svg  ----- */
+
+.svg-icon_approved{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon_approved.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.svg-icon_folder{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon-folder-a.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.svg-icon_folder-locked{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon-folder-locked.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.svg-icon_folder_disable{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon-folder-disable.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.svg-icon_folder:hover{
+   height: 24px;
+   width: 24px;
+   background: url($sass_dir+'/svg/icon-folder-a-hover.svg') no-repeat center !important;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.svg-check_usa{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg/icon-folder-a.svg') no-repeat center !important;
+    display: inline-block;
+    vertical-align: middle;
+ }
+
+
+ .icon_approved{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_approved.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_approved:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_approved-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_edit{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_edit.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_edit:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_edit-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_edit-disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_edit-disable.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-folder-a{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon-folder-a.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-folder-a:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon-folder-a-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-folder-disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon-folder-disable.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_da {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//merge.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_da:hover {
+
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//merge_hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_da_disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//merge_disabled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon_disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//merge_disabled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon_file-pdf-a_hover {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-a-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_file-pdf-a {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-a.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_file-pdf-a:hover {
+
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-a-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_file-disable{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-disable.svg') no-repeat center;
+    display: inline-block;
+   vertical-align: middle;
+}
+
+.icon_file-pdf-dl {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-dl.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_file-pdf-dl:hover {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-dl-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_file-pdf-dl-disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-dl-disable.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_zip {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_zip.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_zip:hover {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_zip_hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_zip_disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_zip_disabled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.icon_download-pdf-dl {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-dl.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_icon_download-pdf-dl:hover {
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-dl-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_icon_download-pdf-dl-disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-pdf-dl-disable.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+.icon_history{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_history.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_history_disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_history-disable.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_history:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_history-hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_cancelled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_cancelled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_cancelled_button_disable{
+    height: 30px;
+    width: 30px;
+    background: url($sass_dir+'/svg//icon_cancelled_disabled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_cancelled_button{
+    height: 30px;
+    width: 30px;
+    background: url($sass_dir+'/svg//icon_cancelled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.icon_cancelled_button:hover{
+    height: 30px;
+    width: 30px;
+    background: url($sass_dir+'/svg//icon_cancelled_hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon_cancelled_disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_cancelled_disabled.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon_cancelled:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_cancelled_hover.svg') no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_save{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_save.svg') no-repeat center;
+    display: inline-block;
+}
+
+
+
+.icon_send{
+    height: 34px;
+    width: 34px;
+    background: url($sass_dir+'/svg//icon_send.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_send:hover{
+    height: 34px;
+    width: 34px;
+    background: url($sass_dir+'/svg//icon_send_hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_send-disable{
+    height: 34px;
+    width: 34px;
+    background: url($sass_dir+'/svg//icon_printer-disable.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_save{
+    height: 34px;
+    width: 34px;
+    background: url($sass_dir+'/svg//icon_save.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_save:hover{
+    height: 34px;
+    width: 34px;
+    background: url($sass_dir+'/svg//icon_save_hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_save-disable{
+    height: 34px;
+    width: 34px;
+    background: url($sass_dir+'/svg//icon_save-disable.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_printer{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_printer.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_printer:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_printer-hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_printer-disable{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_printer-disable.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_file-dwg{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-dwg-dl.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_file-dwg:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-dwg-dl-hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_file-dwg-disabled{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_file-dwg-dl-disable.svg') no-repeat center;
+    display: inline-block;
+}
+
+// dwg
+.icon-dwg{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg/dwg.svg') no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-dwg:hover{
+    background: url($sass_dir+'/svg/dwg-hover.svg') no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+// zip
+.icon-zip{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg/zip.svg') no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-zip:hover{
+    background: url($sass_dir+'/svg/zip-hover.svg') no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+// file
+.icon-file{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg/file.svg') no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-file:hover{
+    background: url($sass_dir+'/svg/file-hover.svg') no-repeat center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon_header-menu-w{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-menu-w.svg') no-repeat center;
+    display: inline-block;
+}
+
+
+
+
+.icon_header-sidebar-w{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-sidebar-w.svg') no-repeat center;
+    display: inline-block;
+}
+
+
+
+.icon_header-sidebar-w.hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-sidebar-hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+
+.icon_header-home-w{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-home-w.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_header-home-w:hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-home-hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_header-submanu-w{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-submanu-w.svg') no-repeat center;
+    display: inline-block;
+}
+
+
+
+.icon_header-submanu-w.hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-submanu-hover.svg') no-repeat center;
+}
+
+.icon_header-submanu2{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-submanu2.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_header-submanu2.hover{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//icon_header-submanu2-hover.svg') no-repeat center;
+    display: inline-block;
+}
+
+.icon_brand_logo_svg{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//iconn-logo-header.svg') no-repeat center;
+}
+
+.icon_brand_logo_svg{
+    height: 24px;
+    width: 24px;
+    background: url($sass_dir+'/svg//iconn-logo-header.svg') no-repeat center;
+}
+
+.icon_table-row-insert{
+   height: 32px;
+   width: 32px;
+   background: url($sass_dir+'/svg//icon-table-insert-row-white.svg') no-repeat center;
+}
+.icon_table-row-remove{
+   height: 32px;
+   width: 32px;
+   background: url($sass_dir+'/svg//icon-table-remove-row-white.svg') no-repeat center;
+}
+
+.icon_float-select-item{
+   height: 32px;
+   width: 32px;
+   background: url($sass_dir+'/svg//icon-float-select-item.svg') no-repeat center;
+}
+
+.v-list-item {
+   -webkit-box-align: center;
+   align-items: center;
+   display: -webkit-box;
+   display: flex;
+   -webkit-box-flex: 1;
+   flex: 1 1 100%;
+   letter-spacing: normal;
+   min-height: 32px !important;
+   outline: none;
+   padding: 0 16px;
+   position: relative;
+   text-decoration: none;
+}
+
+.v-tour__target--highlighted {
+    box-shadow: 0 0 0 99999px rgba(0,0,0,.4) !important;
+  }
