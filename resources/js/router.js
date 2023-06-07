@@ -5,6 +5,8 @@ Vue.use(VueRouter)
 import Home from './components/Home'
 import Hello from './components/Hello'
 import User from './components/User'
+import PermissionPage from './components/Permission'
+import RolePage from './components/Role'
 
 export default new VueRouter({
     mode: 'history',
@@ -23,6 +25,16 @@ export default new VueRouter({
             path: '/users',
             name: 'users',
             component: User
+        },
+        {
+            path: '/master/permissions',
+            name: 'permission',
+            component: PermissionPage
+        },
+        {
+            path: '/master/roles',
+            name: 'role',
+            component: RolePage
         },
     ],
 });

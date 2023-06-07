@@ -30,21 +30,6 @@
       </v-btn>
     </template>
 
-    <template id="cad-pdf" v-if="floatButtons.cadPdf && cadRequestRevisionContent.status == 'SAVED'">
-      <v-btn
-          v-show="CAD_PDF()"
-          color="primary"
-          elevation="2"
-          fab
-          absolute
-          fixed
-          class="float-cad-pdf"
-          right
-          @click="generatePDF"
-      >
-      <v-icon>mdi-file-pdf-box</v-icon>
-      </v-btn>
-    </template>
 
     <!-- <template id="pira-pdf" v-if="floatButtons.piraPdf">
       <v-btn
@@ -111,7 +96,6 @@ export default {
   computed:{
     ...mapState([
         'editMode',
-        'cadRequestRevisionContent'
     ])
   },
 
@@ -147,23 +131,6 @@ export default {
       else return ''
     },
 
-    CAD_PDF(){
-      if(this.floatButtons.cadPdf) return true
-      else return false
-    },
-
-    PIRA_PDF(){
-      if(this.floatButtons.piraPdf) return true
-      else return false
-    },
-
-    generatePDF(){
-      this.$emit('generatePDF', true)
-    },
-
-    generatePiraPDF(){
-      this.$emit('generatePiraPDF', true)
-    }
   }
 
 }

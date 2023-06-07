@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    private $AUTH_USER_ID;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Role::GET_ALL_BY_DESC();
     }
 
     /**
@@ -35,7 +27,14 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->AUTH_USER_ID = auth()->user()->id;
+
+        $role = new Role();
+        $role->name = $request->name;
+        $role->created_by = $this->AUTH_USER_ID;
+        $role->updated_by = $this->AUTH_USER_ID;
+        $role->save();
+
     }
 
     /**
@@ -50,17 +49,6 @@ class RoleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -69,7 +57,11 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $this->AUTH_USER_ID = auth()->user()->id;
+        $role->name = $request->name;
+        $role->updated_at = new \DateTime;
+        $role->updated_by = $this->AUTH_USER_ID;
+        $role->save();
     }
 
     /**
@@ -78,8 +70,8 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function delete(Role $role)
     {
-        //
+        Role::destroy($role->id);
     }
 }

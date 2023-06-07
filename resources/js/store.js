@@ -59,15 +59,26 @@ export default new Vuex.Store({
                         "Role is already exists.",
                 ];
             },
-            uniquePermission(list) {
+
+            uniqueData(list) {
                 return [
                     (v) => !!v || "Field is required",
                     (v) => 
                         // console.log(typeof _.find(list, {name : v}) === 'object', list, v)
                         typeof _.find(list, {name : v}) === 'undefined' ||
-                        "Permission is already exists.",
+                        "is already exists.",
                 ];
             },
+
+            uniqueDataEdit(list, excludeName) {
+                return [
+                  (v) => !!v || "Field is required",
+                  (v) =>
+                    typeof _.find(list, (item) => item.name === v && item.name !== excludeName) === 'undefined' ||
+                    "already exists.",
+                ];
+            },
+              
             array: [(v) => !v.length == 0 || "Field is required"],
             higher_number(min, max) {
                 return [
@@ -99,6 +110,10 @@ export default new Vuex.Store({
         timeout: null,
         loader: false,
         searchItem: '',
+
+        //MASTER DATA
+        PERMISSIONS: [],
+        ROLES: [],
 
     },
 
@@ -171,6 +186,25 @@ export default new Vuex.Store({
             }, timeOut);
         },
 
+        _getPermissions({commit}){
+            axios({
+                method: "get",
+                url: "/api/master/permissions"
+            }).then(({ data }) => {
+                console.log(data)
+                commit("_getPermissions", data)
+            })
+        },
+        _getRoles({commit}){
+            axios({
+                method: "get",
+                url: "/api/master/roles"
+            }).then(({ data }) => {
+                console.log(data)
+                commit("_getRoles", data)
+            })
+        }
+
 
     },
 
@@ -225,6 +259,13 @@ export default new Vuex.Store({
 
         toggleLoader(state, payload){
             state.loader = payload
+        },
+        
+        _getPermissions( state, payload ){
+            state.PERMISSIONS = payload;
+        },
+        _getRoles( state, payload ){
+            state.ROLES = payload;
         },
 
     },

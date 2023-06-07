@@ -51,9 +51,9 @@ export default {
             drawerVal: this.drawer,
             searchField: '',
             items:[
-                {text:'User Management', icon:'mdi-home', to:'tile_colors'},
-                {text:'Role Management', icon:'mdi-home', to:'tile_combinations'},
-                {text:'Permission Management', icon:'mdi-home', to:'house_types'},
+                {text:'User Management', icon:'mdi-home', to:'/master/users'},
+                {text:'Role Management', icon:'mdi-home', to:'/master/roles'},
+                {text:'Permission Management', icon:'mdi-home', to:'/master/permissions'},
             ],
 
 

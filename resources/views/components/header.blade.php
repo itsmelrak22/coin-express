@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
 
-    <title>CAD REQUEST V2</title>
+    <title>COINEXPRESS</title>
 
     <style>
         html { overflow-y: initial !important; }
