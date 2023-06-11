@@ -12,7 +12,7 @@
                 ></v-progress-linear>
               </template>
               <v-card-title class="justify-left">
-                  LARAVEL SPA PASSPORT BREEZE
+                  COIN TRADE EXPRESS
               </v-card-title>
               <v-divider></v-divider>
               <v-card-text>

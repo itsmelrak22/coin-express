@@ -4,8 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\User;
+
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TradeOrderController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\MarketTradecontroller;
+use App\Http\Controllers\DepositController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +43,43 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/master/role/store', [RoleController::class, 'store']);
     Route::post('/master/role/update/{role}', [RoleController::class, 'update']); //> {role} == id yan ng role, need nyo ipadala pag nag axios kayo
     Route::post('/master/role/delete/{role}', [RoleController::class, 'delete']); //> {role} == id yan ng role, need nyo ipadala pag nag axios kayo
+
+
+    Route::get('/AccountInfo', [UserController::class, 'index']);
+    Route::post('/user/update/{user}', [UserController::class, 'update']);
+    Route::post('/user/update2/{user}', [UserController::class, 'update2']);
+
+    Route::post('/Dashboard/store', [TradeOrderController::class, 'store']);
+    Route::get('/TradeOrders', [TradeOrderController::class, 'index']);
+    Route::put('/Dashboard/update', [TradeOrderController::class, 'update']);
+
+
+    Route::get('/accounts', [AccountController::class, 'index']);
+    Route::post('/account/store', [AccountController::class, 'store']);
+    Route::post('/account/update/{account}', [AccountController::class, 'update']);
+
+
+
+    Route::get('/market', [MarketTradecontroller::class, 'index']);
+    Route::post('/market/store', [MarketTradecontroller::class, 'store']);
+    Route::put('/market/update', [MarketTradecontroller::class, 'update']);
+
+    Route::post('/calculateCount', [TradeOrderController::class, 'calculateCount']);
+    // Route::get('/companies/show', [CompanyController::class, 'show']);
+    // Route::get('/companies', [CompanyController::class, 'index']);
+    // Route::post('/companies/store', [CompanyController::class, 'store']);
+    // Route::post('/companies/update', [CompanyController::class, 'update']);
+    // Route::get('/companies/deleted', [CompanyController::class, 'deleted']);
+    // Route::post('/companies/restore', [CompanyController::class, 'restore']);
+    // Route::post('/companies/destroy', [CompanyController::class, 'destroy']);
+
+    Route::get('/RechargeDetails', [DepositController::class, 'index']);
+    Route::post('/RechargeDetails/store', [DepositController::class, 'store']);
+    Route::post('/RechargeDetails/update', [DepositController::class, 'update']);
+    Route::post('/CancelOrder/update', [DepositController::class, 'CancelOrderClient']);
+    //adminside
+    Route::post('/RechargeDetails/update2', [DepositController::class, 'update2']);
+    Route::get('/RechargeDetailsAdmin', [DepositController::class, 'RechargeDetailsAdmin']);
+    Route::post('/CancelOrderAdmin/update', [DepositController::class, 'CancelOrderAdmin']);
 
 });

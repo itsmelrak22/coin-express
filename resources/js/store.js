@@ -10,7 +10,8 @@ const persistedData = new createPersistedState({
     reducer : state => ({
         loggedInUser : state.loggedInUser,
         token: state.token,
-        searchItem: state.searchItem
+        searchItem: state.searchItem,
+        toTrading: state.toTrading
     })
 })
 
@@ -111,6 +112,12 @@ export default new Vuex.Store({
         loader: false,
         searchItem: '',
 
+        tradeorders : [],
+        UserAccounts : [],
+        accounts : [],
+        toTrading : [],
+        userDeposit : [],
+
         //MASTER DATA
         PERMISSIONS: [],
         ROLES: [],
@@ -203,7 +210,27 @@ export default new Vuex.Store({
                 console.log(data)
                 commit("_getRoles", data)
             })
-        }
+        },
+        GetTradeorders( { commit } )
+        {
+            axios( {
+                method : 'GET',
+                url : 'api/TradeOrders',
+            } )
+            .then(res => {
+                commit('GetTradeorders', res.data)
+            })
+        },//end of GetTradeorders
+        GetAccounts( { commit } )
+        {
+            axios( {
+                method : 'GET',
+                url : 'api/accounts'
+            } )
+            .then(res => {
+                commit('GetAccounts', res.data)
+            })
+        },//end of GetAccounts
 
 
     },
@@ -267,6 +294,28 @@ export default new Vuex.Store({
         _getRoles( state, payload ){
             state.ROLES = payload;
         },
+
+        
+        GetUsers( state, payload ){
+            state.UserAccounts = [...payload];
+        },
+
+        GetTradeorders( state, payload ){
+            state.tradeorders = [...payload];
+        },
+
+        GetAccounts( state, payload ){
+            state.accounts = [...payload];
+        },
+
+        "STORE_TRADING" : (state, newState)=>{
+            state.toTrading = newState
+        },
+
+        "STORE_USERDEPOSIT" : (state, newState)=>{
+            state.userDeposit = newState
+        },
+
 
     },
     getters:{},

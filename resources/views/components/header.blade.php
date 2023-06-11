@@ -5,8 +5,8 @@
     <meta name="robots" content="noindex,follow" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset(mix('css/app.css'))}}">
-
-    <title>COINEXPRESS</title>
+    
+    <title>COIN TRADE EXPRESS</title>
 
     <style>
         html { overflow-y: initial !important; }

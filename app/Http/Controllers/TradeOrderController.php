@@ -1,0 +1,128 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\TradeOrder;
+use Illuminate\Http\Request;
+
+class TradeOrderController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        return TradeOrder::all();
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $profit = 0.000;
+
+        $TradeOrder = new TradeOrder;
+        $TradeOrder->User_code = $request->userId;
+        $TradeOrder->user_account = $request->email;
+        $TradeOrder->contract = $request->symbolDisplayName;
+        $TradeOrder->type = $request->direction;
+        $TradeOrder->seconds = $request->discountResult;
+        $TradeOrder->trading = $request->trading;
+        $TradeOrder->quantity = $request->recharge;
+        $TradeOrder->opening_price = $request->open;
+        $TradeOrder->closing_price = $request->close;
+        $TradeOrder->profit =$request->profit;
+        $TradeOrder->order_time = $request->order_time;
+        $TradeOrder->complete_time = $request->complete_time;
+        $TradeOrder->closing_time = $request->closing_time;
+        $TradeOrder->Updated_by = $request->name;
+        $TradeOrder->save();
+        return response()->json('The post successfully added');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\TradeOrder  $tradeOrder
+     * @return \Illuminate\Http\Response
+     */
+    public function show(TradeOrder $tradeOrder)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\TradeOrder  $tradeOrder
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(TradeOrder $tradeOrder)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\TradeOrder  $tradeOrder
+     * @return \Illuminate\Http\Responsev
+     */
+    public function update(Request $request)
+    {
+        //
+        $TradeOrder = TradeOrder::find($request->id);
+
+        $TradeOrder->complete_time = $request->complete_time;
+        $TradeOrder->result = $request->result;
+        $TradeOrder->preset = $request->preset;
+        $TradeOrder->closing_time = $request->closing_time;
+
+        $TradeOrder->save();
+        return response()->json('The book successfully added');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\TradeOrder  $tradeOrder
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(TradeOrder $tradeOrder)
+    {
+        //
+    }
+    public function calculateCount(Request $request)
+    {
+        $data = TradeOrder::all();
+
+        foreach ($data as $item) {
+            // return dd($item);
+            if ($item['counting'] <= 0) {
+                $item['trading'] = 'closed'; // Replace 'updated value' with the desired updated value for item.trading
+                $item->save(); // Save the updated item to the database if needed
+            }
+        }
+        return response()->json('Items updated successfully');
+    }
+}

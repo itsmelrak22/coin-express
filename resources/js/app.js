@@ -10,6 +10,7 @@ import MasterApp from './template/MasterApp';
 import Login from './auth/Login';
 import VueDragscroll from 'vue-dragscroll' 
 import io from 'socket.io-client';
+import MyMixins from './MyMixins'
 
 const socket = io("https://iconntest.hrd-s.com",{
     transports: ["websocket"]
@@ -30,6 +31,7 @@ Vue.use(new VueSocketIO({
         }
     })
 );
+Vue.use(MyMixins)
 
 
 Vue.use(VueDragscroll)

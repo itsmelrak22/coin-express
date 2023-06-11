@@ -4,7 +4,7 @@
    <app-header :drawer="drawer" @toggleDrawer="toggleDrawer($event)"></app-header>
    <app-alert></app-alert>
    <app-loader></app-loader>
-      <v-main >
+      <v-main  class="ma-2">
          <router-view ></router-view>
       </v-main>
   </v-app>

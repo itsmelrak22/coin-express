@@ -1,28 +1,9 @@
 <template>
     <v-navigation-drawer v-model="drawerVal" app clipped @transitionend="toggleDrawer(drawerVal)">
         <v-list dense>
-            <v-subheader>LIST COMPONENTS:</v-subheader>
-               <v-list-item class="search_field">
-                    <v-list-item-content class="pt-0 pb-0 mb-0 mt-0">
-                        <v-list-item-title class="title">
-                            <v-text-field
-                                :value="searchItem"
-                                class="mt-1 project_search"
-                                label="SEARCH MASTER"
-                                hide-details
-                                clearable
-                                outlined
-                                dense
-                                append-icon="mdi-magnify"
-                                @keyup="setSearchItem($event.target.value)"
-                                @click:clear="setSearchItem(null)"
-                            ></v-text-field>
-                        </v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-
+            <v-subheader>LIST PAGES:</v-subheader>
                <v-list-item
-                  v-for="(item, i) in masterList"
+                  v-for="(item, i) in items"
                   :key="i"
                   :href="item.to"
                   link
@@ -34,13 +15,26 @@
                      <v-list-item-title v-text="item.text"></v-list-item-title>
                   </v-list-item-content>
                </v-list-item>
+                <v-list-item
+                  v-for="(item, i) in items2"
+                  :key="i + 'A'"
+                  :to="item.to"
+               >
+                  <v-list-item-icon>
+                     <v-icon v-text="item.icon"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                     <v-list-item-title v-text="item.text"></v-list-item-title>
+                  </v-list-item-content>
+               </v-list-item>
          </v-list>
+
     </v-navigation-drawer>
 </template>
 <script>
 import { mapState ,  mapActions } from 'vuex'
 export default {
-    name: 'MasterAppDrawer',
+    name: 'Drawer',
     props:{
         drawer:{
             type: Boolean
@@ -51,10 +45,22 @@ export default {
             drawerVal: this.drawer,
             searchField: '',
             items:[
-                {text:'User Management', icon:'mdi-home', to:'/master/users'},
-                {text:'Role Management', icon:'mdi-home', to:'/master/roles'},
-                {text:'Permission Management', icon:'mdi-home', to:'/master/permissions'},
+                {text:'User Management', icon:'mdi-home', to:'/users'},
+                {text:'Role Management', icon:'mdi-home', to:'/roles'},
+                {text:'Permission Management', icon:'mdi-home', to:'/permissions'},
+
             ],
+            items2: [
+                {text:'FrontDashboard', icon:'mdi-home', to:'/FrontDashboard'},
+                {text:'ClientSide', icon:'mdi-hand-wave', to:'/ClientSide'},
+                {text: 'Dashboard', icon: 'mdi-account', to : '/Dashboard'},
+                {text: 'AdminSide', icon: 'mdi-account', to : '/AdminSide'},
+                {text: 'Account', icon: 'mdi-account', to : '/Account'},
+                {text: 'grap', icon: 'mdi-account', to : '/'},
+                {text: 'Order', icon: 'mdi-account', to : '/Order'},
+                {text: 'AdminSideDepo', icon: 'mdi-account', to : '/AdminSideDepo'},
+                {text: 'Withdrawal', icon: 'mdi-account', to : '/Withdrawal'},
+            ]
 
 
         }
@@ -66,12 +72,12 @@ export default {
         ]),
 
 
-        masterList(){
-            if(this.searchItem){
-                return _.sortBy(this.items.filter(res => res.text.toLowerCase().includes(this.searchItem.toLowerCase())), [res => res.text]);
-            }
-            return _.sortBy(this.items, [res => res.text]);
-        }
+        // masterList(){
+        //     if(this.searchItem){
+        //         return _.sortBy(this.items.filter(res => res.text.toLowerCase().includes(this.searchItem.toLowerCase())), [res => res.text]);
+        //     }
+        //     return _.sortBy(this.items, [res => res.text]);
+        // }
     },
     watch: {
         drawer(val){
