@@ -9,7 +9,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TradeOrderController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\MarketTradecontroller;
+use App\Http\Controllers\MarketTradeController;
 use App\Http\Controllers\DepositController;
 
 /*
@@ -60,9 +60,9 @@ Route::middleware('auth:api')->group(function () {
 
 
 
-    Route::get('/market', [MarketTradecontroller::class, 'index']);
-    Route::post('/market/store', [MarketTradecontroller::class, 'store']);
-    Route::put('/market/update', [MarketTradecontroller::class, 'update']);
+    Route::get('/market', [MarketTradeController::class, 'index']);
+    Route::post('/market/store', [MarketTradeController::class, 'store']);
+    Route::put('/market/update', [MarketTradeController::class, 'update']);
 
     Route::post('/calculateCount', [TradeOrderController::class, 'calculateCount']);
     // Route::get('/companies/show', [CompanyController::class, 'show']);
