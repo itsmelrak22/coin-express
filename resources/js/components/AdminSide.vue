@@ -59,8 +59,8 @@
                     <td style="font-size:12px">{{ tradeorders.complete_time }}</td>
                     <!-- <td>{{tradeorders.order_time}}</td>
                 <td>{{(tradeorders.created_at).slice(0, 10)}}</td> -->
-                    <td >
-                        <!-- v-if="tradeorders.complete_time == null " -->
+                    <td  v-if="tradeorders.complete_time == null">
+                        
                         <v-btn class="elevation-5" x-small dark @click="winBtn(tradeorders)">Win</v-btn>
                         <v-btn class="elevation-5" x-small dark @click="loseBtn(tradeorders)">Lost</v-btn>
                     </td>
