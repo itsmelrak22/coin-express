@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main">
         <div>
             <center>
                 <v-card flat max-width="80%">
@@ -10,7 +10,7 @@
                         <b>{{ details.symbolDisplayName }}</b>
                         <b>{{ obj.counting }}</b> </v-card-title
                         
-                    >details
+                    >
                 </v-card>
 
                 <v-card flat max-width="80%" max-height="55%">
@@ -149,7 +149,7 @@
         </v-footer>
 
         <v-bottom-sheet v-model="sheet">
-            <v-card style="overflow-y: auto" :height="$vuetify.breakpoint.height - 400">
+            <v-card style="overflow-y: auto"  :height="$vuetify.breakpoint.height - 400">
                 <v-card-text>
                     <v-row>
                     <v-col>
@@ -264,7 +264,7 @@
                     <v-col>
                         <p>Investment Amount</p><br />
                         <v-text-field
-                        placeholder="Minimun Purchase Limit 1"
+                        placeholder="Minimun Purchase Limit 100"
                         outlined
                         dense
         
@@ -281,12 +281,10 @@
                         <span> {{ loggedInUser.profit }}</span
                         ><br />
                         <span class="text-right">
-                        {{
-                            obj.recharge == null
-                            ? 0
-                            : (obj.profit =
-                                parseFloat(obj.recharge) * parseFloat(discount) +
-                                parseFloat(obj.recharge))
+                        {{obj.recharge == null ? 0 : 
+                            (obj.profit = parseFloat(obj.recharge)
+                             * parseFloat(discount) + 
+                            parseFloat(obj.recharge))
                         }} </span
                         ><br
                     /></v-col>
@@ -314,6 +312,7 @@ export default {
     },
     props: ["symbol"],
     data: () => ({
+        TIDArr: [],
         SelectedCrpyto: {},
         details: {},
         ticker: {},
@@ -335,6 +334,8 @@ export default {
         this.getMarketTable();
 
         this.GetDetails();
+
+        this.loadLastID();
 
         // this.calculateCount();
 
@@ -501,12 +502,13 @@ console.log(this.cryptos1[0].ticker.count,'sss  ')
         },
 
         submitbtn() {
+
             this.obj.trading = "pending";
-        
+            this.obj.T_id = `T${moment().format("YYYYMMDD")}-${this.GenerateTID(this.LastTID)}`
             this.obj.order_time = moment().format("YYYY-MM-DD HH:mm:ss");
             this.obj.complete_time = moment().format("YYYY-MM-DD HH:mm:ss");
             this.obj.profit = this.obj.profit - this.obj.recharge;
-            console.log(combine);
+            
             
             let d = moment().format("YYYY-MM-DD HH:mm:ss");
             let a = d.substring(0, 14);
@@ -515,25 +517,42 @@ console.log(this.cryptos1[0].ticker.count,'sss  ')
             let combine = a + b + c;
             this.obj.closing_time = moment().format(`${combine}`);
 
-            axios
-                .post("api/Dashboard/store", this.obj)
+            console.log('obj',this.obj)
+            console.log('combine',combine);
+            axios.post("api/Dashboard/store", this.obj)
                 .then((res) => {
                     this.obj = {};
                 });
         },
 
-        // GetTrade(){
-        //     axios.get(`https://omicomadswork.com/api/currency/getTradeDetail`).then((res)=>{
+        GenerateTID(Last_TID) {
+            let id = Last_TID;
+            let split = id.split("-");
+            console.log('split',split)
+            let newId = +split[1] + 1;
+            console.log('newid',newId )
+            return newId.toString().padStart(7, "0");
+            
+        }, //GENERATE VAMID FOR EMPLOYEE APPLICATION
 
-        //         this.SelectedCrpyto = res.data.result.trade
-        //         for (let i=0; i < this.SelectedCrpyto.length; i++){
-        //             if(this.toTrading.match_id == this.SelectedCrpyto[i].match_id){
-        //                 // this.details = this.SelectedCrpyto[i]
-        //                 // console.log('trade',this.details)
-        //             }
-        //         }
-        //     })
-        // }
+        loadLastID() {
+            // LOAD VAM ID FOR EMPLOYEE APPLICATION
+            console.log('load')
+            axios
+                .get(`api/GetTID`).then((res) => {
+                    console.log('resdto',res.data)
+                    this.LastTID = "";
+                    if (res.data[0] != null) {
+                        this.TIDArr = res.data[0];
+                        console.log('last1',this.TIDArr)
+                        this.LastTID = this.TIDArr; // Last VAMID for current date
+                        console.log('last2',this.LastUserID)
+                    } else {
+                        this.LastTID = "XXXXXXXXXX-000000";
+                        console.log('Employee',this.LastTID)
+                    }
+                })
+        }, //end of load vehicleID/VAMSID
     },
     components: {
         CoinCharts,
@@ -557,5 +576,13 @@ th {
     font-weight: bold !important;
     text-align: center !important;
     color: black !important;
+}
+
+.main{
+    overflow: auto;
+    height:700px;
+    padding: 20px;
+    width: 70%;
+    margin: auto;
 }
 </style>
