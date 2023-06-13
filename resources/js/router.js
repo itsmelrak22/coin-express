@@ -105,13 +105,13 @@ export default new VueRouter({
         },
 
         {
-            path: '/DepositView/RechargePage',
+            path: '/RechargePage',
             name: 'RechargePage',
             component: RechargePage
         },
 
         {
-            path: '/DepositView/RechargePage/RechargeDetails',
+            path: '/RechargeDetails',
             name: 'RechargeDetails',
             component: RechargeDetails
         },

@@ -74,6 +74,7 @@ export default {
                     console.log('wlang pera')
                     axios.post(`/api/RechargeDetails/update2`,item).then((res)=>{
                     if(res.data){
+                        this.getdata()
                 axios.post(`/api/user/update/${item.UserID}`,item).then((res)=>{
                     if(res.data){
                     console.log('pasok')
@@ -89,6 +90,7 @@ export default {
 
                 axios.post(`/api/RechargeDetails/update2`,item).then((res)=>{
                     if(res.data){
+                        this.getdata()
                 axios.post(`/api/user/update2/${item.UserID}`,{Amount:this.total}).then((res)=>{
                     if(res.data){
                     console.log('pasok')

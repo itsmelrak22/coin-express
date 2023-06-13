@@ -19,6 +19,13 @@ class TradeOrderController extends Controller
 
     }
 
+    public function GetTID(){
+        $data = TradeOrder::orderBy('created_at', 'desc')
+        ->pluck('T_id');
+
+        return $data;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +49,7 @@ class TradeOrderController extends Controller
 
         $TradeOrder = new TradeOrder;
         $TradeOrder->User_code = $request->userId;
+        $TradeOrder->T_id = $request->T_id;
         $TradeOrder->user_account = $request->email;
         $TradeOrder->contract = $request->symbolDisplayName;
         $TradeOrder->type = $request->direction;
@@ -52,7 +60,7 @@ class TradeOrderController extends Controller
         $TradeOrder->closing_price = $request->close;
         $TradeOrder->profit =$request->profit;
         $TradeOrder->order_time = $request->order_time;
-        $TradeOrder->complete_time = $request->complete_time;
+       
         $TradeOrder->closing_time = $request->closing_time;
         $TradeOrder->Updated_by = $request->name;
         $TradeOrder->save();
@@ -90,13 +98,14 @@ class TradeOrderController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        // 
+        // return dd($request);
         $TradeOrder = TradeOrder::find($request->id);
 
-        $TradeOrder->complete_time = $request->complete_time;
-        $TradeOrder->result = $request->result;
+        // $TradeOrder->complete_time = $request->complete_time;
+        // $TradeOrder->result = $request->result;
         $TradeOrder->preset = $request->preset;
-        $TradeOrder->closing_time = $request->closing_time;
+        // $TradeOrder->closing_time = $request->closing_time;
 
         $TradeOrder->save();
         return response()->json('The book successfully added');
@@ -115,12 +124,28 @@ class TradeOrderController extends Controller
     public function calculateCount(Request $request)
     {
         $data = TradeOrder::all();
-
+        
         foreach ($data as $item) {
             // return dd($item);
-            if ($item['counting'] <= 0) {
-                $item['trading'] = 'closed'; // Replace 'updated value' with the desired updated value for item.trading
-                $item->save(); // Save the updated item to the database if needed
+            if ($item['counting'] <= 0  && $item['T_id'] == $request->T_id){
+                if($item['preset'] === null){
+                    $item['trading'] = 'closed'; // Replace 'updated value' with the desired updated value for item.trading
+                    $item['complete_time'] = date('Y-m-d H:i:s'); 
+                    $item['preset'] = 'Win';
+                    $item['result'] = $request->result;
+                    $item->save(); // Save the updated item to the database if needed
+                }else if($item['preset'] === 'Win'){
+                    $item['trading'] = 'closed'; // Replace 'updated value' with the desired updated value for item.trading
+                    $item['complete_time'] = date('Y-m-d H:i:s'); 
+                    $item['result'] = $request->result;
+                    $item->save(); // Save the updated item to the database if needed
+                }else if($item['preset'] === 'Lost'){
+                    $item['trading'] = 'closed'; // Replace 'updated value' with the desired updated value for item.trading
+                    $item['complete_time'] = date('Y-m-d H:i:s'); 
+                    $item['quantity'] = $request->quantity;
+                    $item->save(); // Save the updated item to the database if needed
+                }
+              
             }
         }
         return response()->json('Items updated successfully');

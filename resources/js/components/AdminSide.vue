@@ -59,7 +59,8 @@
                     <td style="font-size:12px">{{ tradeorders.complete_time }}</td>
                     <!-- <td>{{tradeorders.order_time}}</td>
                 <td>{{(tradeorders.created_at).slice(0, 10)}}</td> -->
-                    <td v-if="tradeorders.complete_time == null ">
+                    <td >
+                        <!-- v-if="tradeorders.complete_time == null " -->
                         <v-btn class="elevation-5" x-small dark @click="winBtn(tradeorders)">Win</v-btn>
                         <v-btn class="elevation-5" x-small dark @click="loseBtn(tradeorders)">Lost</v-btn>
                     </td>
@@ -87,7 +88,7 @@ export default {
 
     created() {
 
-        setInterval(() => { this.settimes = moment().format("YYYY-MM-DD HH:mm:ss a"); }, 1000);
+        setInterval(() => { this.settimes = moment().format("YYYY-MM-DD HH:mm:ss a"); }, 5000);
     },
 
     computed:
@@ -115,22 +116,25 @@ export default {
             console.log(val)
             this.obj = { ...val }
             this.obj.preset = 'Win'
-            this.obj.result = parseFloat(this.obj.quantity) + parseFloat(this.obj.profit);
-            console.log(this.obj.result)
-
-         
-            this.obj.closing_time = moment().format(`${combine}`);
-            this.obj.complete_time =  moment().format("YYYY-MM-DD HH:mm:ss");
-            this.obj.updated = moment().format("YYYY-MM-DD HH:mm:ss");
-
-            console.log(  this.obj.closing_time, 'ordertime');
-
+            console.log(  this.obj, 'obj');
             axios
                 .put("api/Dashboard/update", this.obj)
                 .then((res) => {
                     this.obj = {}
+                    this.GetTradeorders()
                 });
-  
+        },
+        loseBtn(val){
+            console.log(val)
+            this.obj = { ...val }
+            this.obj.preset = 'Lost'
+            console.log(  this.obj, 'obj');
+            axios
+                .put("api/Dashboard/update", this.obj)
+                .then((res) => {
+                    this.obj = {}
+                    this.GetTradeorders()
+                });
         }
     },
 

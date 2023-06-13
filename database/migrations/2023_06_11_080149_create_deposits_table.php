@@ -20,7 +20,7 @@ class CreateDepositsTable extends Migration
             $table->string('UserAccount');
             $table->string('Type');
             $table->string('Amount');
-            $table->string('Screenshot');
+            $table->string('Screenshot')->nullable();;
             $table->string('State');
             $table->string('Methods');
             $table->timestamps();

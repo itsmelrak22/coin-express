@@ -108,7 +108,7 @@
 
           <template>
             <v-footer plain padless class="footer">
-              <v-bottom-navigation :value="value" color="primary" fixed>
+              <v-bottom-navigation  color="primary" fixed>
                 <v-row no-gutters>
                   <v-col class="text-center" cols="4">
                     <v-btn @click="Home" block>
