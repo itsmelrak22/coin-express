@@ -12,6 +12,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MarketTradeController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgentClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,5 +91,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/RechargeDetails/update2', [DepositController::class, 'update2']);
     Route::get('/RechargeDetailsAdmin', [DepositController::class, 'RechargeDetailsAdmin']);
     Route::post('/CancelOrderAdmin/update', [DepositController::class, 'CancelOrderAdmin']);
+
+    Route::get('/admin/{admin}/clients', [AgentClientController::class, 'index']);
 
 });

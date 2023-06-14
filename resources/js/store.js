@@ -35,7 +35,7 @@ export default new Vuex.Store({
                 (v) =>
                     !v ||
                     /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-                    "E-mail must be valid",
+                    "E-mail must be valid format",
             ],
             password: [
                 (v) => !!v || "Field is required",

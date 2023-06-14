@@ -47,14 +47,14 @@ class Admin extends Authenticatable
         return self::where([
             ['never_admin', 1],
             ['is_agent', 1],
-        ])->orderBy('created_at')->get();
+        ])->orderBy('created_at', 'desc')->get();
     }
 
     public static function getAdminAgents(){
         return self::where([
             ['never_admin', 0],
             ['is_agent', 1],
-        ])->orderBy('created_at')->get();
+        ])->orderBy('created_at', 'desc')->get();
     }
 
 }

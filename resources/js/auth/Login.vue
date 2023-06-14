@@ -57,7 +57,7 @@
                         outlined
                         dense
                         name="password"
-                        :rules="rules.password"
+                        :rules="rules.required"
                       ></v-text-field>
 
                       <v-divider></v-divider>
