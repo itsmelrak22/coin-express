@@ -12,13 +12,13 @@
                 ></v-progress-linear>
               </template>
               <v-card-title class="justify-left">
-                  COIN TRADE EXPRESS
+                  ADMIN SIDE
               </v-card-title>
               <v-divider></v-divider>
               <v-card-text>
               <v-tabs v-model="tab" centered grow>
                 <v-tab @click="resetForm()"> Login </v-tab>
-                <v-tab @click="resetForm()"> Register </v-tab>
+                <!-- <v-tab @click="resetForm()"> Register </v-tab> -->
               </v-tabs>
               <v-tabs-items v-model="tab">
                 <!-- Login -->
@@ -74,7 +74,7 @@
                   </v-card-text>
                 </v-tab-item>
                 <!-- Register -->
-                <v-tab-item >
+                <!-- <v-tab-item >
                   <v-card-text>
                     <p>Register with your employee :</p>
                     <v-form id="RegisterForm" ref="RegisterForm" v-on:submit.prevent="handleRegistration">
@@ -152,7 +152,7 @@
 
                     </v-form>
                   </v-card-text>
-                </v-tab-item>
+                </v-tab-item> -->
               </v-tabs-items>
 
               </v-card-text>

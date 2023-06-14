@@ -1,6 +1,5 @@
 <template>
     <v-app-bar app clipped-left clipped-right dark color="blue-grey darken-4">
-
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
         <v-btn class="ml-3" v-on="on" icon @click="toggleDrawer(!drawer)">

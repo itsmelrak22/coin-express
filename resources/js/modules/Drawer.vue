@@ -48,6 +48,7 @@ export default {
                 {text:'User Management', icon:'mdi-home', to:'/users'},
                 {text:'Role Management', icon:'mdi-home', to:'/roles'},
                 {text:'Permission Management', icon:'mdi-home', to:'/permissions'},
+                {text:'Admin User Management', icon:'mdi-home', to:'/admin_users'},
 
             ],
             items2: [
@@ -61,7 +62,6 @@ export default {
                 {text: 'AdminSideDepo', icon: 'mdi-account', to : '/AdminSideDepo'},
                 {text: 'Withdrawal', icon: 'mdi-account', to : '/Withdrawal'},
             ]
-
 
         }
     },
@@ -81,7 +81,6 @@ export default {
     },
     watch: {
         drawer(val){
-            console.log(val)
             this.drawerVal = val
         }
     },

@@ -23,7 +23,8 @@ import RechargeDetails from './components/RechargeDetails'
 import AdminSideDepo from './components/AdminSideDepo'
 import AccountInfo from './components/AccountInfo'
 
-import Withdrawal from './components/Withdrawal'
+// import Withdrawal from './components/Withdrawal'
+import AdminUser from './components/AdminUser'
 
 export default new VueRouter({
     mode: 'history',
@@ -52,6 +53,11 @@ export default new VueRouter({
             path: '/roles',
             name: 'role',
             component: RolePage
+        },
+        {
+            path: '/admin_users',
+            name: 'admin_user',
+            component: AdminUser
         },
         {
             path: '/FrontDashboard',
@@ -128,10 +134,10 @@ export default new VueRouter({
             component: AdminSideDepo
         },
 
-        {
-            path: '/Withdrawal',
-            name: 'Withdrawal',
-            component: Withdrawal
-        },
+        // {
+        //     path: '/Withdrawal',
+        //     name: 'Withdrawal',
+        //     component: Withdrawal
+        // },
     ],
 });

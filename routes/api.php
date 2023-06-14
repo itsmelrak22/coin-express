@@ -11,6 +11,7 @@ use App\Http\Controllers\TradeOrderController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MarketTradeController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,12 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/master/role/store', [RoleController::class, 'store']);
     Route::post('/master/role/update/{role}', [RoleController::class, 'update']); //> {role} == id yan ng role, need nyo ipadala pag nag axios kayo
     Route::post('/master/role/delete/{role}', [RoleController::class, 'delete']); //> {role} == id yan ng role, need nyo ipadala pag nag axios kayo
+    
+    Route::get('/master/admin/agents', [AdminController::class, 'GetAgents']);
+    Route::get('/master/admin/admin_agents', [AdminController::class, 'getAdminAgents']);
+    Route::post('/master/admin/user/store', [AdminController::class, 'store']);
+    Route::post('/master/admin/user/update/{admin}', [AdminController::class, 'update']); //> {admin} == id yan ng admin, need nyo ipadala pag nag axios kayo
+    Route::post('/master/admin/user/delete/{admin}', [AdminController::class, 'delete']); //> {admin} == id yan ng admin, need nyo ipadala pag nag axios kayo
 
 
     Route::get('/AccountInfo', [UserController::class, 'index']);

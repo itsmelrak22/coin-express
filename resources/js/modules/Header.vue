@@ -1,14 +1,6 @@
 <template>
     <v-app-bar app clipped-left clipped-right dark color="blue-grey darken-4">
-    <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-        <v-btn class="ml-3" href="/" v-on="on" icon>
-            <v-icon >mdi-home</v-icon> 
-        </v-btn>
-        </template>
-        <span>Home</span>
-    </v-tooltip>
-
+    <v-app-bar-nav-icon  icon @click="toggleDrawer(!drawerVal)"></v-app-bar-nav-icon>
     <v-toolbar-title> <span class="overline">COINEXPRESS.COM </span> </v-toolbar-title>
     <v-spacer></v-spacer>
     
@@ -50,13 +42,9 @@
 import { mapState , mapActions } from 'vuex'
 
 export default {
-  props: {
-      drawer:{
-          type: Boolean
-      },
-  },
 
   data: () => ({ 
+    drawerVal: false,
     csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     menu: null,
   }),
@@ -110,7 +98,14 @@ export default {
   },
 
   mounted() {
-  }
+  },
+
+    watch: {
+        drawer(val){
+            console.log(val)
+            this.drawerVal = val
+        }
+    },
 }
 </script>
 
