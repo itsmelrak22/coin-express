@@ -121,6 +121,8 @@ export default new Vuex.Store({
         //MASTER DATA
         PERMISSIONS: [],
         ROLES: [],
+        AGENTS: [],
+        ADMIN_AGENTS: [],
 
     },
 
@@ -231,6 +233,22 @@ export default new Vuex.Store({
                 commit('GetAccounts', res.data)
             })
         },//end of GetAccounts
+        _getAgents({commit}){
+            axios({
+                method: "get",
+                url: "/api/master/admin/agents"
+            }).then(({ data }) => {
+                commit("_getAgents", data)
+            })
+        },//end _getAgents
+        _getAdminAgents({commit}){
+            axios({
+                method: "get",
+                url: "/api/master/admin/admin_agents"
+            }).then(({ data }) => {
+                commit("_getAdminAgents", data)
+            })
+        },//end _getAdminAgents
 
 
     },
@@ -315,6 +333,14 @@ export default new Vuex.Store({
         "STORE_USERDEPOSIT" : (state, newState)=>{
             state.userDeposit = newState
         },
+
+        _getAgents(state, payload){
+            state.AGENTS = payload
+        },
+
+        _getAdminAgents(state, payload){
+            state.ADMIN_AGENTS = payload
+        }
 
 
     },
