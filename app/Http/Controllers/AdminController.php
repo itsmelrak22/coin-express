@@ -36,7 +36,7 @@ class AdminController extends Controller
         $admin = new Admin;
         $admin->email = $request->email;
         $admin->name = $request->name;
-        $admin->password = bcrypt( $request->email );
+        $admin->password = bcrypt($request->password);
         $admin->phone = $request->phone;
         $admin->is_agent = 1;
         if( $request->role == 'admin' ){
