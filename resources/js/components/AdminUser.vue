@@ -16,14 +16,17 @@
 
         <v-card>
             <v-card-title>
-                <v-btn
-                    color="#34495E"
-                    elevation="2"
-                    raised
-                    small
-                    dark
-                    @click="toggleStore(true)"
-                >Add User</v-btn>
+                <div v-if="loggedInUser.never_admin === 2">
+                    <v-btn
+                        color="#34495E"
+                        elevation="2"
+                        raised
+                        small
+                        dark
+                        @click="toggleStore(true)"
+                    >Add User
+                    </v-btn>
+                </div>
             </v-card-title>
             <v-card-text>
                 <h3>AGENTS</h3>
@@ -35,21 +38,28 @@
                     :search="search"
                 >
                 <template v-slot:[`item.actions`]="{ item }">
-                    <v-icon
-                        small
-                        class="mr-2"
-                        @click="toggleUpdate(true , item)"
-                    >
-                        mdi-pencil
-                    </v-icon>
-                    <v-icon
-                        small
-                        @click="toggleDelete(true , item)"
-                    >
-                        mdi-delete
-                    </v-icon>
+                    <template v-if="loggedInUser.never_admin === 2">
+                        <v-icon
+                            small
+                            class="mr-2"
+                            @click="toggleUpdate(true , item)"
+                        >
+                            mdi-pencil
+                        </v-icon>
+                        <v-icon
+                            small
+                            @click="toggleDelete(true , item)"
+                        >
+                            mdi-delete
+                        </v-icon>
+                    </template>
                 </template>
-                    <template v-slot:no-data>
+
+                <template v-slot:[`item.created_at`]="{ item }">
+                    {{ formatDate(item) }}
+                </template>
+
+                <template v-slot:no-data>
                     <v-btn
                         color="primary"
                         @click="initialize"
@@ -69,19 +79,21 @@
                     :search="search"
                 >
                 <template v-slot:[`item.actions`]="{ item }">
-                    <v-icon
-                        small
-                        class="mr-2"
-                        @click="toggleUpdate(true , item)"
-                    >
-                        mdi-pencil
-                    </v-icon>
-                    <v-icon
-                        small
-                        @click="toggleDelete(true , item)"
-                    >
-                        mdi-delete
-                    </v-icon>
+                    <template v-if="loggedInUser.never_admin === 2">
+                        <v-icon
+                            small
+                            class="mr-2"
+                            @click="toggleUpdate(true , item)"
+                        >
+                            mdi-pencil
+                        </v-icon>
+                        <v-icon
+                            small
+                            @click="toggleDelete(true , item)"
+                        >
+                            mdi-delete
+                        </v-icon>
+                    </template>
                 </template>
                     <template v-slot:no-data>
                     <v-btn
@@ -108,10 +120,53 @@
                                     <v-text-field 
                                         outlined 
                                         dense 
-                                        label="Permission Name"
+                                        label="Email"
+                                        name="email" 
+                                        class="required"
+                                        type="email"
+                                        :rules="rules.email"
+                                    > </v-text-field>
+                                    <v-text-field 
+                                        outlined 
+                                        autocomplete="off"
+                                        :type="showPassword ? 'text' : 'password' "
+                                        :append-icon="showPassword ? 'mdi-eye': 'mdi-eye-off'"
+                                        @click:append="showPassword = !showPassword"
+                                        @focus="$event.target.removeAttribute('readonly');"
+                                        required
+                                        readonly 
+                                        dense 
+                                        label="Password"
+                                        name="password" 
+                                        class="required"
+                                        :rules="rules.required"
+                                    > </v-text-field>
+                                    <v-autocomplete
+                                        outlined
+                                        label="Role"
+                                        class="required"
+                                        clearable
+                                        dense
+                                        :items="roles"
+                                        item-text="text"
+                                        item-value="value"
+                                        name="role"
+                                    ></v-autocomplete>
+                                    <v-text-field 
+                                        outlined 
+                                        dense 
+                                        label="Fullname"
                                         name="name" 
                                         class="required"
-                                        :rules="rules.uniqueData(AGENTS)"
+                                        :rules="rules.required"
+                                    > </v-text-field>
+                                    <v-text-field 
+                                        outlined 
+                                        dense 
+                                        label="Phone Number"
+                                        name="phone" 
+                                        class="required"
+                                        :rules="rules.required"
                                     > </v-text-field>
                                 </v-col>
                             </v-row>
@@ -134,14 +189,72 @@
                         <v-card-text>
                             <v-row>
                                 <v-col cols="12">
-                                    <v-text-field
+                                    <v-text-field 
+                                        v-model="tempData.email"
+                                        outlined 
+                                        dense 
+                                        label="Email"
+                                        name="email" 
+                                        class="required"
+                                        type="email"
+                                        :rules="rules.email"
+                                    > </v-text-field>
+                                    <!-- <v-text-field 
+                                        v-model="tempData.password"
+                                        outlined 
+                                        autocomplete="off"
+                                        :type="showPassword ? 'text' : 'password' "
+                                        :append-icon="showPassword ? 'mdi-eye': 'mdi-eye-off'"
+                                        @click:append="showPassword = !showPassword"
+                                        @focus="$event.target.removeAttribute('readonly');"
+                                        required
+                                        readonly 
+                                        dense 
+                                        label="Password"
+                                        name="password" 
+                                        class="required"
+                                        :rules="rules.required"
+                                    > </v-text-field> -->
+                                    <v-autocomplete
+                                        v-model="tempData.role"
+                                        outlined
+                                        label="Role"
+                                        class="required"
+                                        clearable
+                                        dense
+                                        :items="roles"
+                                        item-text="text"
+                                        item-value="value"
+                                        name="role"
+                                    ></v-autocomplete>
+                                    <v-text-field 
+                                        v-if="tempData.invitation_code"
+                                        v-model="tempData.invitation_code"
+                                        outlined 
+                                        dense 
+                                        disabled
+                                        label="Invitation Code"
+                                        name="name" 
+                                        class="required"
+                                        :rules="rules.required"
+                                    > </v-text-field>
+                                    <v-text-field 
                                         v-model="tempData.name"
                                         outlined 
                                         dense 
-                                        label="Permission Name"
+                                        label="Fullname"
                                         name="name" 
                                         class="required"
-                                        :rules="rules.uniqueDataEdit(AGENTS, tempData.name)"
+                                        :rules="rules.required"
+                                    > </v-text-field>
+                                    <v-text-field 
+                                        v-model="tempData.phone"
+                                        outlined 
+                                        dense 
+                                        label="Phone Number"
+                                        name="phone" 
+                                        class="required"
+                                        :rules="rules.required"
                                     > </v-text-field>
                                 </v-col>
                             </v-row>
@@ -164,7 +277,7 @@
                         <v-card-text>
                             <v-row>
                                 <v-col cols="12">
-                                    <p class="overline">CONFIRM DELETE ADMIN USER?</p>
+                                    <p class="overline">CONFIRM DELETE AGENT?</p>
                                 </v-col>
                             </v-row>
                         </v-card-text>
@@ -203,14 +316,26 @@ export default {
 
             headers: [
                 {
-                    text: 'Name',
-                    align: 'start',
-                    value: 'name',
+                    text: 'Email', align: 'start', value: 'email',
+                },
+                {
+                    text: 'Name', align: 'start', value: 'name',
+                },
+                {
+                    text: 'Invitation Code', align: 'start', value: 'invitation_code',
+                },
+                {
+                    text: 'Date Registered', align: 'start', value: 'created_at',
                 },
                 { text: 'Actions', value: 'actions', sortable: false, width: "10%" },
             ],
             search: '',
-            tempData: {}
+            showPassword: false, 
+            tempData: {},
+            roles: [
+                {text: 'Admin', value: 'admin'},
+                {text: 'Agent', value: 'agent'},
+            ]
         }
     },
 
@@ -218,7 +343,8 @@ export default {
         ...mapState([
             'AGENTS',
             'ADMIN_AGENTS',
-            'rules'
+            'rules',
+            'loggedInUser'
         ]),
 
     },
@@ -248,6 +374,7 @@ export default {
 
 			this.dialogUpdate = isShow;
             this.tempData = {...object};
+            this.tempData.role = this.tempData.never_admin ? 'agent' : 'admin';
 		},
         toggleDelete(isShow, object = {}){
             if( ! isShow ) {
@@ -273,8 +400,13 @@ export default {
                     method: 'POST',
                     url: '/api/master/admin/user/store',
                     data: formdata
-                }).then(() => {
-                    this._getAgents();
+                }).then(( { data } ) => {
+                    if(data.exists){
+                        alert(data.exists)
+                        return;
+                    }
+                    
+                    this.initialize();
                     this.$refs.Store.reset()
                     this.toggleStore(false);
                 }).catch((err) => {
@@ -294,10 +426,10 @@ export default {
 
                 axios({
                     method: 'POST',
-                    url: `/api/master/adminin/user/update/${this.tempData.id}`,
+                    url: `/api/master/admin/user/update/${this.tempData.id}`,
                     data: formdata
                 }).then(() => {
-                    this._getAgents();
+                    this.initialize();
                     this.$refs.Update.reset()
                     this.toggleUpdate(false);
                 }).catch((err) => {
@@ -317,10 +449,10 @@ export default {
 
                 axios({
                     method: 'POST',
-                    url: `/api/master/adminin/user/delete/${this.tempData.id}`,
+                    url: `/api/master/admin/user/delete/${this.tempData.id}`,
                     data: formdata
                 }).then(() => {
-                    this._getAgents();
+                    this.initialize();
                     this.$refs.Delete.reset()
                     this.toggleDelete(false);
                 }).catch((err) => {
@@ -332,6 +464,11 @@ export default {
                 })
             }
         },
+        formatDate(item){
+            const formattedTimestamp = new Date(item.created_at).toISOString().replace("T", " ").replace("Z", "");
+            // console.log(formattedTimestamp);
+            return formattedTimestamp
+        }
     },
 
     async mounted(){

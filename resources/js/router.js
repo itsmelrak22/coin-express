@@ -2,20 +2,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
-import Home from './components/Home'
-import Hello from './components/Hello'
+// import Home from './components/Home'
+// import Hello from './components/Hello'
 import User from './components/User'
 import PermissionPage from './components/Permission'
 import RolePage from './components/Role'
 
 import FrontDashboard from './components/FrontDashboardView'
-import ClientSide from './components/ClientSide'
-import Dashboard from './components/Dashboard'
+// import ClientSide from './components/ClientSide'
+// import Dashboard from './components/Dashboard'
 import AdminSide from './components/AdminSide'
-import Account from './components/Account'
-import Order from './components/Order'
+// import Account from './components/Account'
+// import Order from './components/Order'
 
-import MainPage from './components/MainPage'
+// import MainPage from './components/MainPage'
 import ViewTrade from './components/ViewTrade'
 import DepositView from './components/DepositView'
 import RechargePage from './components/RechargePage'
@@ -25,20 +25,11 @@ import AccountInfo from './components/AccountInfo'
 
 // import Withdrawal from './components/Withdrawal'
 import AdminUser from './components/AdminUser'
+import MyClient from './components/MyClient'
 
 export default new VueRouter({
     mode: 'history',
     routes: [
-        {
-            path: '/home',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/hello',
-            name: 'hello',
-            component: Hello
-        },
         {
             path: '/users',
             name: 'users',
@@ -60,42 +51,20 @@ export default new VueRouter({
             component: AdminUser
         },
         {
-            path: '/FrontDashboard',
-            name: 'FrontDashboard',
-            component: FrontDashboard
-        },
-        {
-            path: '/ClientSide',
-            name: 'ClientSide',
-            component: ClientSide
-        },
-
-        {
-            path: '/Dashboard',
-            name: 'Dashboard',
-            component : Dashboard
-        },
-        
-        {
             path: '/AdminSide',
             name: 'AdminSide',
             component : AdminSide
         },
-        {
-            path: '/Account',
-            name: 'Account',
-            component: Account
-        },
-        {
-            path: '/Order',
-            name: 'Order',
-            component: Order
-        },
+        // {
+        //     path: '/Account',
+        //     name: 'Account',
+        //     component: Account
+        // },
 
         {
             path: '/',
-            name: 'MainPage',
-            component: MainPage
+            name: 'FrontDashboard',
+            component: FrontDashboard
         },
 
         {
@@ -133,11 +102,10 @@ export default new VueRouter({
             name: 'AdminSideDepo',
             component: AdminSideDepo
         },
-
-        // {
-        //     path: '/Withdrawal',
-        //     name: 'Withdrawal',
-        //     component: Withdrawal
-        // },
+        {
+            path: '/my_clients',
+            name: 'MyClient',
+            component: MyClient
+        },
     ],
 });

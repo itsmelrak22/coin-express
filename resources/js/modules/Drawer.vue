@@ -1,12 +1,12 @@
 <template>
     <v-navigation-drawer v-model="drawerVal" app clipped @transitionend="toggleDrawer(drawerVal)">
         <v-list dense>
-            <v-subheader>LIST PAGES:</v-subheader>
-               <v-list-item
-                  v-for="(item, i) in items"
-                  :key="i"
-                  :href="item.to"
-                  link
+            <v-subheader> PAGES:</v-subheader>
+               
+                <v-list-item
+                  v-for="(item, i) in items2"
+                  :key="i + 'A'"
+                  :to="item.to"
                >
                   <v-list-item-icon>
                      <v-icon v-text="item.icon"></v-icon>
@@ -15,10 +15,13 @@
                      <v-list-item-title v-text="item.text"></v-list-item-title>
                   </v-list-item-content>
                </v-list-item>
-                <v-list-item
-                  v-for="(item, i) in items2"
-                  :key="i + 'A'"
-                  :to="item.to"
+               <v-divider></v-divider>
+
+               <v-list-item
+                  v-for="(item, i) in items"
+                  :key="i"
+                  :href="item.to"
+                  link
                >
                   <v-list-item-icon>
                      <v-icon v-text="item.icon"></v-icon>
@@ -45,22 +48,18 @@ export default {
             drawerVal: this.drawer,
             searchField: '',
             items:[
-                {text:'User Management', icon:'mdi-home', to:'/users'},
-                {text:'Role Management', icon:'mdi-home', to:'/roles'},
-                {text:'Permission Management', icon:'mdi-home', to:'/permissions'},
-                {text:'Admin User Management', icon:'mdi-home', to:'/admin_users'},
+                // {text:'User Management', icon:'mdi-home', to:'/users'},
+                // {text:'Role Management', icon:'mdi-home', to:'/roles'},
+                // {text:'Permission Management', icon:'mdi-home', to:'/permissions'},
+                {text:'Agent Management', icon:'mdi-home', to:'/admin_users'},
+                {text:'My Clients', icon:'mdi-home', to:'/my_clients'},
 
             ],
             items2: [
-                {text:'FrontDashboard', icon:'mdi-home', to:'/FrontDashboard'},
-                {text:'ClientSide', icon:'mdi-hand-wave', to:'/ClientSide'},
-                {text: 'Dashboard', icon: 'mdi-account', to : '/Dashboard'},
-                {text: 'AdminSide', icon: 'mdi-account', to : '/AdminSide'},
-                {text: 'Account', icon: 'mdi-account', to : '/Account'},
-                {text: 'grap', icon: 'mdi-account', to : '/'},
-                {text: 'Order', icon: 'mdi-account', to : '/Order'},
-                {text: 'AdminSideDepo', icon: 'mdi-account', to : '/AdminSideDepo'},
-                {text: 'Withdrawal', icon: 'mdi-account', to : '/Withdrawal'},
+                {text:'Dashboard', icon:'mdi-home', to:'/'},
+                {text: 'Trade Order', icon: 'mdi-account', to : '/AdminSide'},
+                // {text: 'Account', icon: 'mdi-account', to : '/Account'},
+                {text: 'Admin Side Depo', icon: 'mdi-account', to : '/AdminSideDepo'},
             ]
 
         }
@@ -70,14 +69,6 @@ export default {
         ...mapState([
             'searchItem',
         ]),
-
-
-        // masterList(){
-        //     if(this.searchItem){
-        //         return _.sortBy(this.items.filter(res => res.text.toLowerCase().includes(this.searchItem.toLowerCase())), [res => res.text]);
-        //     }
-        //     return _.sortBy(this.items, [res => res.text]);
-        // }
     },
     watch: {
         drawer(val){
