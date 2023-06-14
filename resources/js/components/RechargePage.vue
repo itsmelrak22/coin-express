@@ -275,7 +275,7 @@
                         :color="bct == true ? 'error' : ''"
                         width="100%"
                         style="border-radius:10px"
-                    >toorder
+                    >
                         <span>Bank card transfer</span>
                         <v-spacer/>
                     </v-btn>
@@ -601,11 +601,12 @@ export default {
                     axios.post('api/RechargeDetails/store',this.toorder).then((res)=>{
                         if(res.data){
                             alert('pasok')
+                            this.$store.commit("STORE_USERDEPOSIT",  this.toorder);
+                            console.log(this.toorder)
+                            this.$router.push('/RechargeDetails')
                         }
                     })
-                    this.$store.commit("STORE_USERDEPOSIT",  this.toorder);
-                    console.log(this.toorder)
-                    this.$router.push('/DepositView/RechargePage/RechargeDetails')
+                  
                 }else{
                     alert('Please Select')
                 }
@@ -629,7 +630,7 @@ export default {
             // LOAD VAM ID FOR EMPLOYEE APPLICATION
             console.log('load')
             axios
-                .get(`/api/RechargeDetails`).then((res) => {
+                .get(`api/RechargeDetails`).then((res) => {
                     this.LastUserID = "";
                     if (res.data[0] != null) {
                         this.UserIDArr = res.data[0];

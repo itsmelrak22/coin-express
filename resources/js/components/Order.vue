@@ -124,7 +124,7 @@ this.getTradeOrder();
         if(this.functionName != 'Transaction'){
             clearInterval(interval)
         }
-            axios.get(`api/TradeOrders`).then((res) => {
+            axios.get(`http://127.0.0.1:8000/api/TradeOrders`).then((res) => {
               this.gettradeorders = res.data
  
 
@@ -142,15 +142,15 @@ this.getTradeOrder();
     // let interval = setInterval(() => {
 
       if ( item.counting == 0) {
-alert('1')
+    alert('1')
         clearInterval(interval);
-        this.updateTradingValue(this.gettradeorders);
+        this.updateTradingValue(item);
 
       }else if(item.counting <= 0 && item.trading === 'pending'){
         alert('2')
         clearInterval(interval);
 
-        this.updateTradingValue(this.gettradeorders);
+        this.updateTradingValue(item);
 
       }
       item.counting--;
@@ -162,14 +162,22 @@ alert('1')
       },1000 );
         },
         updateTradingValue(item) {
-  axios.post(`api/calculateCount`, item)
-    .then((response) => {
-        this.getTradeOrder(); 
+           
+            item.result = parseFloat(item.quantity) + parseFloat(item.profit);
+            console.log('item dto sa order',item)
+            axios.post(`http://127.0.0.1:8000/api/calculateCount`, item)
+                .then((response) => {
+                    this.getTradeOrder(); 
+                    //admin win or loost bawas o dagdag ng pera
 
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+            axios.post(`http://127.0.0.1:8000/api/adminprocess`,item).then((res)=>{
+                alert('success')
+            })
+
+                })
+                .catch((error) => {
+                console.error(error);
+                });
 },
     },
 };

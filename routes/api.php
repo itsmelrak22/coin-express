@@ -55,10 +55,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/AccountInfo', [UserController::class, 'index']);
     Route::post('/user/update/{user}', [UserController::class, 'update']);
     Route::post('/user/update2/{user}', [UserController::class, 'update2']);
+    Route::post('/adminprocess', [UserController::class, 'adminprocess']);
 
     Route::post('/Dashboard/store', [TradeOrderController::class, 'store']);
     Route::get('/TradeOrders', [TradeOrderController::class, 'index']);
     Route::put('/Dashboard/update', [TradeOrderController::class, 'update']);
+    Route::get('/GetTID', [TradeOrderController::class, 'GetTID']);
 
 
     Route::get('/accounts', [AccountController::class, 'index']);

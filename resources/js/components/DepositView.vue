@@ -41,7 +41,7 @@ export default {
         },
 
         GotoRecharge(){
-            this.$router.push("/DepositView/RechargePage")
+            this.$router.push("/RechargePage")
         }
     }
 }

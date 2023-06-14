@@ -170,7 +170,7 @@ export default {
             this.$router.push("/")
         },
         BACK(){
-            this.$router.push("/DepositView/RechargePage")
+            this.$router.push("/RechargePage")
         },
         SAVE(){
             console.log(this.userDeposit)
