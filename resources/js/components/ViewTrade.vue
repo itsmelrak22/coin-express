@@ -452,13 +452,19 @@ export default {
                 });
         },
         getMarketTable() {
-            axios.get(`api/market`).then((res) => {
-                this.getmarket_arr = res.data;
-                // console.log(this.getmarket_arr);
-            });
-            //     setInterval(() => {
-            //     location.reload();
-            // }, 40000);
+            console.log(
+                this.toTrading.symbolDisplayName.replace("/", ""),
+                "ssssss"
+            );
+            let symbolDisplayName = this.toTrading.symbolDisplayName.replace(
+                "/",
+                ""
+            );
+            axios.get(`/api/getMarketTables/${symbolDisplayName}`)
+                .then((res) => {
+                    this.getmarket_arr = res.data;
+                    console.log(this.getmarket_arr, "sssssss");
+                });
         },
 
         getAmount() {
@@ -468,15 +474,16 @@ export default {
             });
         },
         addMarketTable() {
-            // this.obj.change = this.cryptos1[0].ticker.change
-// console.log( this.getmarket_arr)
-console.log(this.cryptos1[0].ticker.count,'sss  ')
+            let symbolDisplayName = this.toTrading.symbolDisplayName.replace(
+                "/",
+                ""
+            );
 
             this.obj.lastPrice = this.cryptos.lastPrice;
             this.obj.price24hPcnt = this.cryptos.price24hPcnt;
             this.obj.updated_at = moment().format("YYYY-MM-DD HH:mm:ss");
             this.obj.Count = this.cryptos1[0].ticker.count;
-            this.obj.No = this.getmarket_arr.length + 1;
+            this.obj.SymbolName = symbolDisplayName;
 // console.log( this.obj)
 
             axios
