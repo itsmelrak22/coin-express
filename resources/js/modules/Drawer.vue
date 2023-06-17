@@ -53,6 +53,8 @@ export default {
                 // {text:'Permission Management', icon:'mdi-home', to:'/permissions'},
                 {text:'Agent Management', icon:'mdi-home', to:'/admin_users'},
                 {text:'My Clients', icon:'mdi-home', to:'/my_clients'},
+                {text: 'History', icon: 'mdi-account', to : '/exchangehistory'},
+
 
             ],
             items2: [

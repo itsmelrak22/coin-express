@@ -34,12 +34,13 @@
                     <td style="font-size:12px">{{ tradeorders.user_account }}</td>
                     <td style="font-size:12px">{{ tradeorders.contract }}</td>
                     <td style="font-size:12px">
-           <v-icon small>mdi-arrow-up</v-icon> <span>{{ tradeorders.direction == 'sell' ? 'Down' : 'Up' }}</span>
-
-                        <v-chip outlined color="success" dense x-small  v-if="tradeorders.direction == 'sell'">
+            <span>{{ tradeorders.type == 'sell' ? 'Down' : 'Up' }}</span>
+           <!-- <v-icon small>mdi-arrow-down</v-icon> <span>{{ tradeorders.type == 'buy' ? 'Up' : 'Down' }}</span> -->
+                        <v-chip outlined color="success" dense x-small  v-if="tradeorders.type == 'sell'">
                             Set Up
                         </v-chip>
-                        <v-chip color="error" dense x-small outlined      v-else>
+                        
+                        <v-chip color="error" dense x-small outlined  v-else>
                             Set Down
                         </v-chip>
 
@@ -59,8 +60,8 @@
                     <td style="font-size:12px">{{ tradeorders.complete_time }}</td>
                     <!-- <td>{{tradeorders.order_time}}</td>
                 <td>{{(tradeorders.created_at).slice(0, 10)}}</td> -->
-                    <td  v-if="tradeorders.complete_time == null">
-                        
+                    <td  v-if="tradeorders.complete_time == null ">
+                        <!-- v-if="tradeorders.complete_time == null " -->
                         <v-btn class="elevation-5" x-small dark @click="winBtn(tradeorders)">Win</v-btn>
                         <v-btn class="elevation-5" x-small dark @click="loseBtn(tradeorders)">Lost</v-btn>
                     </td>
@@ -88,7 +89,7 @@ export default {
 
     created() {
 
-        setInterval(() => { this.settimes = moment().format("YYYY-MM-DD HH:mm:ss a"); }, 5000);
+        setInterval(() => { this.settimes = moment().format("YYYY-MM-DD HH:mm:ss a"); }, 1000);
     },
 
     computed:
@@ -105,12 +106,6 @@ export default {
             ([
                 'GetTradeorders'
             ]),
-
-        // function : update() {
-        //     $('#clock').html(moment().format('D. MMMM YYYY H:mm:ss'));
-        // }
-
-        // setInterval(update, 1000);
 
         winBtn(val) {
             console.log(val)

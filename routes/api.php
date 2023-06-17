@@ -56,6 +56,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/AccountInfo', [UserController::class, 'index']);
     Route::post('/user/update/{user}', [UserController::class, 'update']);
     Route::post('/user/update2/{user}', [UserController::class, 'update2']);
+    Route::post('/user/update3/{user}', [UserController::class, 'update3']);
     Route::post('/adminprocess', [UserController::class, 'adminprocess']);
 
     Route::post('/Dashboard/store', [TradeOrderController::class, 'store']);
@@ -69,6 +70,9 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/account/update/{account}', [AccountController::class, 'update']);
 
 
+    Route::get('/history', [ExchangeHistoryController::class, 'index']);
+    Route::post('/history/store', [ExchangeHistoryController::class, 'store']);
+    Route::put('/history/update', [ExchangeHistoryController::class, 'update']);
 
     Route::get('/market', [MarketTradeController::class, 'index']);
     Route::post('/market/store', [MarketTradeController::class, 'store']);
