@@ -85,6 +85,15 @@ class UserController extends Controller
         $User->save();
         return response()->json('The post successfully Save');
     }
+    public function update3(Request $request, User $User)
+    {
+        // return dd( $request->Amount);
+        
+        $User->Asset = $request->Amount;
+    
+        $User->save();
+        return response()->json('The post successfully Save');
+    }
 
     public function adminprocess(Request $request){
         
