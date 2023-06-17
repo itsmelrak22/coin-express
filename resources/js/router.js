@@ -26,6 +26,7 @@ import AccountInfo from './components/AccountInfo'
 // import Withdrawal from './components/Withdrawal'
 import AdminUser from './components/AdminUser'
 import MyClient from './components/MyClient'
+import ExchangeHistory from './components/ExchangeHistory'
 
 export default new VueRouter({
     mode: 'history',
@@ -106,6 +107,11 @@ export default new VueRouter({
             path: '/my_clients',
             name: 'MyClient',
             component: MyClient
+        },
+        {
+            path: '/exchangehistory',
+            name: 'ExchangeHistory',
+            component: ExchangeHistory
         },
     ],
 });
