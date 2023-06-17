@@ -15,7 +15,7 @@ class AgentClientController extends Controller
                                         'agent_clients.client_id',
                                         'users.name',
                                         'users.email',
-                                        'users.asset',
+                                        'users.Asset',
                                         'users.country',
                                         'admins.invitation_code',
                                         'admins.email as inviter_email'
