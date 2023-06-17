@@ -15,6 +15,8 @@ class ExchangeHistoryController extends Controller
     public function index()
     {
         //
+        return ExchangeHistory::all();
+
     }
 
     /**
@@ -36,6 +38,22 @@ class ExchangeHistoryController extends Controller
     public function store(Request $request)
     {
         //
+        $market = new ExchangeHistory;
+        $market->client_id = $request->client_id;
+        $market->client_name = $request->client_name;
+        $market->exchange_name = $request->exchange_name;
+
+        $market->agent_id = $request->agent_id;
+        $market->email = $request->email;
+        $market->inviter_email = $request->inviter_email;
+        $market->Amount = $request->Amount;
+        $market->Asset = $request->Asset;
+        $market->prev_Asset = $request->prev_Asset;
+        $market->invitation_code = $request->invitation_code;
+
+        $market->save();
+        return response()->json('The post successfully Save');
+
     }
 
     /**

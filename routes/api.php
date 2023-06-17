@@ -13,6 +13,7 @@ use App\Http\Controllers\MarketTradeController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentClientController;
+use App\Http\Controllers\ExchangeHistoryController;
 
 /*
 |--------------------------------------------------------------------------
