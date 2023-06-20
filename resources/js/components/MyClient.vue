@@ -84,6 +84,8 @@
                                     label="Amount"
                                     v-model="tempData.amount"
                                     :rules="[checkAmount, rules.required]"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                    autocomplete="off"
                                 >
                                 </v-text-field>
                                 <!-- :rules="rules.uniqueData(ROLES)" -->
@@ -134,6 +136,7 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 import moment from "moment";
+import Swal from "sweetalert2";
 
 export default {
     sockets: {
@@ -208,6 +211,20 @@ export default {
             console.log(this.tempData)
         },
         submit(){
+            var toastMixin = Swal.mixin({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation : false,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar : true,
+                dibOpen : (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
             if (this.$refs.form.validate() == false) {
         }else{
 
@@ -219,15 +236,15 @@ export default {
             // }
 if(this.selectedExchange == 'Withdraw'){
     this.tempData.Asset =  parseInt(this.tempData.Asset) - parseInt(this.tempData.amount) ;
-    alert('ss')
+    // alert('ss')
 
 }
 else{
-    alert('depos')
+    // alert('depos')
     this.tempData.Asset =  parseInt(this.tempData.Asset) + parseInt(this.tempData.amount) ;
 
 }
-    console.log(this.tempData.Asset,'this.tempData.Asset')
+    // console.log(this.tempData.Asset,'this.tempData.Asset')
             // this.addHistory(this.te);
           this.tempData.updated_at = moment().format("YYYY-MM-DD HH:mm:ss");
         //   this.tempData.created_at = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -239,7 +256,13 @@ else{
                 .then((res) => {
                     this.tempData = {};
                     this.dialogExchange = false;
-
+              
+            toastMixin.fire({
+                icon: 'success',
+                title : 'Success',
+                animation:true,
+                text: 'successfully saved',
+            })
                 });
             }
         },
@@ -251,7 +274,7 @@ else{
 
             if (val) {
 // alert('1')
-            if(val < 0 || val > 100000000 ){
+            if(val < 0 || val >= 100000001 ){
                 return "Invalid Amount"
             }else if(this.selectedExchange == 'Withdraw'){
                 if(val > money){
