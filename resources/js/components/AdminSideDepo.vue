@@ -51,6 +51,23 @@
 
 import axios from "axios";
 export default {
+    sockets: {
+        // NOTE : SOCKET 
+        updateReceived: function(socket) {
+            console.log(socket)
+            if( socket.updateType && socket.updateType == 'ViewTrade'){
+                console.log('getData')
+                // this.$store.dispatch('GetTradeorders')
+                // this.getData();
+                axios.get(`/api/RechargeDetailsAdmin`).then((res) => {
+                    this.deposit = res.data;
+                    
+                    // this.amount = res.data.amount;
+                    console.log('getdata',this.deposit );
+                });
+            }
+        }
+    },
     data:()=>({
         deposit : {},
         // State : undefined
@@ -64,7 +81,6 @@ export default {
     },
 
     methods:{
-       
 
     ConfirmPayment(item){
         console.log(item)

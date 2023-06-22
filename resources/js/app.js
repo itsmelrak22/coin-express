@@ -12,18 +12,14 @@ import VueDragscroll from 'vue-dragscroll'
 import io from 'socket.io-client';
 import MyMixins from './MyMixins'
 
-const socket = io("https://iconntest.hrd-s.com",{
-    transports: ["websocket"]
-});
+const socket = io("http://31.220.31.202:5000");
 
 Vue.prototype.$socket = socket;
 import VueSocketIO from 'vue-socket.io'
 
 Vue.use(new VueSocketIO({
     // debug: false,
-    connection: io('https://iconntest.hrd-s.com', {
-        transports: ["websocket"]
-    }), //options object is Optional
+    connection: io('http://31.220.31.202:5000'), //options object is Optional
     vuex: {
         store,
         actionPrefix: "SOCKET_",
