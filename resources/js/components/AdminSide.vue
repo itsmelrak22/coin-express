@@ -62,8 +62,8 @@
                 <td>{{(tradeorders.created_at).slice(0, 10)}}</td> -->
                     <td  v-if="tradeorders.complete_time == null ">
                         <!-- v-if="tradeorders.complete_time == null " -->
-                        <v-btn class="elevation-5" x-small dark @click="winBtn(tradeorders)">Win</v-btn>
-                        <v-btn class="elevation-5" x-small dark @click="loseBtn(tradeorders)">Lost</v-btn>
+                        <v-btn class="elevation-5" x-small dark @click="winBtn(tradeorders)">WIN</v-btn>
+                        <v-btn class="elevation-5" x-small dark @click="loseBtn(tradeorders)">LOSE</v-btn>
                     </td>
                 </tr>
             </tbody>
@@ -73,39 +73,43 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
 import moment from "moment";
 import axios from "axios";
 
 export default {
+    sockets: {
+        // NOTE : SOCKET 
+        updateReceived: function(socket) {
+            console.log(socket)
+            if( socket.updateType && socket.updateType == 'GetTrade'){
+                console.log('getData')
+                this.GetTradeorders()
+            }
+        }
+    },
     data() {
         return {
             settimes: '',
             obj: {},
+            tradeorders :[],
 
             // oras:moment().format('MMMM Do YYYY, h:mm:ss a')
         }
     },
 
     created() {
-
-        setInterval(() => { this.settimes = moment().format("YYYY-MM-DD HH:mm:ss a"); }, 1000);
+        this.GetTradeorders()
+        // setInterval(() => { this.settimes = moment().format("YYYY-MM-DD HH:mm:ss a"); }, 1000);
     },
 
     computed:
     {
-        ...mapState
-            ([
-                'tradeorders',
-            ])
+
     },//end of amputed
     methods: {
 
 
-        ...mapActions
-            ([
-                'GetTradeorders'
-            ]),
+  
 
         winBtn(val) {
             console.log(val)
@@ -122,7 +126,7 @@ export default {
         loseBtn(val){
             console.log(val)
             this.obj = { ...val }
-            this.obj.preset = 'Lost'
+            this.obj.preset = 'Lose'
             console.log(  this.obj, 'obj');
             axios
                 .put("api/Dashboard/update", this.obj)
@@ -130,12 +134,15 @@ export default {
                     this.obj = {}
                     this.GetTradeorders()
                 });
-        }
-    },
+        },
+        GetTradeorders(){
+            axios.get(`api/TradeOrders`).then((res)=>{
+                this.tradeorders = res.data
+                console.log('gettrade',this.tradeorders)
+            })
+        },
 
-    mounted() {
-        this.GetTradeorders()
-    }
+    },
 }
 </script>
 

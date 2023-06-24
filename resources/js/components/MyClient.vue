@@ -263,6 +263,7 @@ else{
                 animation:true,
                 text: 'successfully saved',
             })
+            this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
                 });
             }
         },

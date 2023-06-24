@@ -112,7 +112,7 @@ export default new Vuex.Store({
         loader: false,
         searchItem: '',
 
-        tradeorders : [],
+        // tradeorders : [],
         UserAccounts : [],
         accounts : [],
         toTrading : [],
@@ -213,16 +213,16 @@ export default new Vuex.Store({
                 commit("_getRoles", data)
             })
         },
-        GetTradeorders( { commit } )
-        {
-            axios( {
-                method : 'GET',
-                url : 'api/TradeOrders',
-            } )
-            .then(res => {
-                commit('GetTradeorders', res.data)
-            })
-        },//end of GetTradeorders
+        // GetTradeorders( { commit } )
+        // {
+        //     axios( {
+        //         method : 'GET',
+        //         url : 'api/TradeOrders',
+        //     } )
+        //     .then(res => {
+        //         commit('GetTradeorders', res.data)
+        //     })
+        // },//end of GetTradeorders
         GetAccounts( { commit } )
         {
             axios( {
@@ -318,9 +318,9 @@ export default new Vuex.Store({
             state.UserAccounts = [...payload];
         },
 
-        GetTradeorders( state, payload ){
-            state.tradeorders = [...payload];
-        },
+        // GetTradeorders( state, payload ){
+        //     state.tradeorders = [...payload];
+        // },
 
         GetAccounts( state, payload ){
             state.accounts = [...payload];

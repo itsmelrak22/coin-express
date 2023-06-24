@@ -129,7 +129,16 @@ import moment from "moment";
 
 export default {
     sockets: {
-
+        // NOTE : SOCKET 
+        updateReceived: function(socket) {
+            console.log(socket)
+            if( socket.updateType && socket.updateType == 'AdminHistory'){
+                console.log('getData')
+                  axios.get(`/api/history`).then((res)=>{
+                    this.histories = [...res.data]
+                  })
+            }
+        }
     },
     data(){
         return {

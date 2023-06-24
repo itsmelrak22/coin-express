@@ -55,14 +55,10 @@ export default {
         // NOTE : SOCKET 
         updateReceived: function(socket) {
             console.log(socket)
-            if( socket.updateType && socket.updateType == 'ViewTrade'){
+            if( socket.updateType && socket.updateType == 'Recharge'){
                 console.log('getData')
-                // this.$store.dispatch('GetTradeorders')
-                // this.getData();
                 axios.get(`/api/RechargeDetailsAdmin`).then((res) => {
                     this.deposit = res.data;
-                    
-                    // this.amount = res.data.amount;
                     console.log('getdata',this.deposit );
                 });
             }
@@ -91,13 +87,15 @@ export default {
                     axios.post(`/api/RechargeDetails/update2`,item).then((res)=>{
                     if(res.data){
                         this.getdata()
-                axios.post(`/api/user/update/${item.UserID}`,item).then((res)=>{
+                    axios.post(`/api/user/update/${item.UserID}`,item).then((res)=>{
                     if(res.data){
                     console.log('pasok')
-                    this.getdata()
+                    this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
+                    this.$socket.emit('newUpdate', { updateType: "RechargeHistory" })
                     }
                 })
                     }
+                    
                 })
                 }else{
                     console.log('dadagdagan')
@@ -111,6 +109,8 @@ export default {
                     if(res.data){
                     console.log('pasok')
                     this.getdata()
+                    this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
+                    this.$socket.emit('newUpdate', { updateType: "RechargeHistory" })
                     }
                 })
                     }
@@ -123,8 +123,6 @@ export default {
         getdata(){
         axios.get(`/api/RechargeDetailsAdmin`).then((res) => {
             this.deposit = res.data;
-            
-            // this.amount = res.data.amount;
             console.log('getdata',this.deposit );
         });
         },
