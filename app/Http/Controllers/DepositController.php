@@ -24,7 +24,8 @@ class DepositController extends Controller
 
     public function RechargeDetailsAdmin()
     {
-        return Deposit::all();
+       $data =  Deposit::orderBy('created_at', 'desc')->get();
+       return $data;
     }
 
     /**

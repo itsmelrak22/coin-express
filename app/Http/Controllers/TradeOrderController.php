@@ -15,8 +15,8 @@ class TradeOrderController extends Controller
     public function index()
     {
         //
-        return TradeOrder::all();
-
+        $data = TradeOrder::orderBy('created_at', 'desc')->get();
+        return $data;
     }
 
     public function GetTID(){
