@@ -50,6 +50,7 @@
 <script>
 
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
     sockets: {
         // NOTE : SOCKET 
@@ -79,6 +80,20 @@ export default {
     methods:{
 
     ConfirmPayment(item){
+        var toastMixin = Swal.mixin({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation : false,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar : true,
+                dibOpen : (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
         console.log(item)
         for(let i=0; i<this.amount.length; i++){
             if(item.UserID == this.amount[i].id){
@@ -90,6 +105,12 @@ export default {
                     axios.post(`/api/user/update/${item.UserID}`,item).then((res)=>{
                     if(res.data){
                     console.log('pasok')
+                    toastMixin.fire({
+                        icon: 'success',
+                        title : 'Success!',
+                        animation:true,
+                        text: 'Sucessfully Confirmed!',
+                        })
                     this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
                     this.$socket.emit('newUpdate', { updateType: "RechargeHistory" })
                     }
@@ -109,6 +130,12 @@ export default {
                     if(res.data){
                     console.log('pasok')
                     this.getdata()
+                    toastMixin.fire({
+                        icon: 'success',
+                        title : 'Success!',
+                        animation:true,
+                        text: 'Sucessfully Confirmed!',
+                        })
                     this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
                     this.$socket.emit('newUpdate', { updateType: "RechargeHistory" })
                     }
@@ -135,10 +162,29 @@ export default {
         });
         },
         cancelorder(item){
+            var toastMixin = Swal.mixin({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation : false,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar : true,
+                dibOpen : (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
             console.log(item)
             axios.post(`api/CancelOrderAdmin/update`,item).then((res)=>{
                 if(res.data){
-                    alert('Order canceled')
+                    toastMixin.fire({
+                        icon: 'error',
+                        title : 'Oppss...!',
+                        animation:true,
+                        text: 'Cancel Order',
+                        })
                     this.getdata()
                 }
             })

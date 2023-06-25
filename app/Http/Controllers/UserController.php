@@ -117,7 +117,7 @@ class UserController extends Controller
                     'Asset' => $item['Asset'] + $request->result,
                 ]);
             }
-            else if($request['preset'] === 'Lost' && $item['id'] == $request->User_code){
+            else if($request['preset'] === 'Lose' && $item['id'] == $request->User_code){
                 echo ('3');
                 User::where('id', $request->User_code)
                 ->update([
