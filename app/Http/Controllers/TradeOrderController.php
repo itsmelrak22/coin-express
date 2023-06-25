@@ -139,7 +139,7 @@ class TradeOrderController extends Controller
                     $item['complete_time'] = date('Y-m-d H:i:s'); 
                     $item['result'] = $request->result;
                     $item->save(); // Save the updated item to the database if needed
-                }else if($item['preset'] === 'Lost'){
+                }else if($item['preset'] === 'Lose'){
                     $item['trading'] = 'closed'; // Replace 'updated value' with the desired updated value for item.trading
                     $item['complete_time'] = date('Y-m-d H:i:s'); 
                     $item['quantity'] = $request->quantity;

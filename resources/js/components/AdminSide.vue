@@ -75,6 +75,7 @@
 <script>
 import moment from "moment";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default {
     sockets: {
@@ -112,6 +113,20 @@ export default {
   
 
         winBtn(val) {
+            var toastMixin = Swal.mixin({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation : false,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar : true,
+                dibOpen : (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
             console.log(val)
             this.obj = { ...val }
             this.obj.preset = 'Win'
@@ -121,9 +136,29 @@ export default {
                 .then((res) => {
                     this.obj = {}
                     this.GetTradeorders()
+                    toastMixin.fire({
+                        icon: 'success',
+                        title : 'Success!',
+                        animation:true,
+                        text: 'Sucessfully Set Win on PRESET updated',
+                        })
                 });
         },
         loseBtn(val){
+            var toastMixin = Swal.mixin({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation : false,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar : true,
+                dibOpen : (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
             console.log(val)
             this.obj = { ...val }
             this.obj.preset = 'Lose'
@@ -133,6 +168,12 @@ export default {
                 .then((res) => {
                     this.obj = {}
                     this.GetTradeorders()
+                    toastMixin.fire({
+                        icon: 'success',
+                        title : 'Success!',
+                        animation:true,
+                        text: 'Sucessfully Set Lose on PRESET updated',
+                        })
                 });
         },
         GetTradeorders(){
