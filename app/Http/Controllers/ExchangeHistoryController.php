@@ -15,7 +15,8 @@ class ExchangeHistoryController extends Controller
     public function index()
     {
         //
-        return ExchangeHistory::all();
+        $data = ExchangeHistory::orderBy('created_at', 'desc')->get();
+        return $data;
 
     }
 
@@ -42,6 +43,7 @@ class ExchangeHistoryController extends Controller
         $market->client_id = $request->client_id;
         $market->client_name = $request->client_name;
         $market->exchange_name = $request->exchange_name;
+        $market->remarks = $request->remarks;
 
         $market->agent_id = $request->agent_id;
         $market->email = $request->email;

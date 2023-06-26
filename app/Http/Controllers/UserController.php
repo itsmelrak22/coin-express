@@ -82,6 +82,7 @@ class UserController extends Controller
         // return dd($request);
         
         $User->Asset = $request->Amount;
+        $User->remarks = $request->remarks;
         $User->save();
         return response()->json('The post successfully Save');
     }
