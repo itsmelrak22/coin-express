@@ -35,6 +35,7 @@
                             Withdraw
                         </v-btn>
                         <v-btn
+                        :disabled="item.remarks == 'Account Locked'? true : false"
                             x-small
                             @click="
                                 toggleExchange(
@@ -46,17 +47,15 @@
                             Deposit
                         </v-btn>
                     </template>
-                    <template v-slot:[`item.actions`]="{}">
-                        <v-icon
-                            small
-                            class="mr-2"
-                            @click="toggleUpdate(true, item)"
-                        >
-                            mdi-pencil
-                        </v-icon>
-                        <v-icon small @click="toggleDelete(true, item)">
-                            mdi-delete
-                        </v-icon>
+                    <template v-slot:[`item.remarks`]="{ item }">
+                        <v-switch
+              v-model="item.remarks"
+              @change="switchbtn(item)"
+         
+              color="indigo darken-3"
+
+              
+            ></v-switch>
                     </template>
                     <template v-slot:no-data>
                         <v-btn color="primary" @click="initialize">
@@ -137,11 +136,23 @@
 import { mapActions, mapState } from 'vuex';
 import moment from "moment";
 import Swal from "sweetalert2";
+import axios from 'axios';
 
-export default {
+export default { 
+
     sockets: {
-
+        // NOTE : SOCKET 
+        updateReceived: function(socket) {
+            console.log(socket)
+            if( socket.updateType && socket.updateType == 'ConfirmRecharge'){
+                console.log('getData')
+                this.GetUser();
+                this.initialize();
+            }
+        }
     },
+   
+    
     data(){
         return {
             dialogStore: false,
@@ -149,6 +160,7 @@ export default {
             dialogDelete: false,
             dialogExchange: false,
             overlay: false,
+            switch1:true,
             clients: [],
             prev:null,
             headers: [
@@ -167,7 +179,12 @@ export default {
                 {
                     text: 'Asset', align: 'start', value: 'Asset',
                 },
+               
                 { text: 'Exchange', value: 'exchange', sortable: false, width: "10%" },
+
+                {
+                    text: 'Remarks', align: 'start', value: 'remarks', sortable: false, width: "10%"
+                },
 
                 // { text: 'Actions', value: 'actions', sortable: false, width: "10%" },
             ],
@@ -178,6 +195,7 @@ export default {
             search: '',
             selectedExchange:'',
             tempData: {},
+            Account:{},
             valid:true,
         }
     },
@@ -197,13 +215,94 @@ export default {
     methods: {
         ...mapActions([
         ]),
+        GetUser(){
+            axios.get(`api/AccountInfo`).then((res) => {
+            for(let i = 0; i < res.data.length; i++){
+                if(this.loggedInUser.id == res.data[i].id){
+                //   console.log('user',res.data[i].Asset)
+                this.Account = res.data[i]
+                this.totalmoney = this.Account.Asset
+                console.log(this.totalmoney,'ss')
+                }
+            }
+            });
+    },
         async initialize(){
             await axios({
                 method: "GET",
                 url: `/api/admin/${this.loggedInUser.id}/clients`
             }).then(( { data } ) => {
-                this.clients = [...data]
+                this.clients = [...data] 
+                if (this.clients.actions === 'Account Locked') {
+                    this.clients.isOn = true;
+      } else {
+        this.clients.isOn = false;
+      }
             })
+        },
+        switchbtn(val){
+            var toastMixin = Swal.mixin({
+                toast: true,
+                icon: 'success',
+                title: 'General Title',
+                animation : false,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar : true,
+                dibOpen : (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            this.Account ={...val}
+                if(this.Account.remarks == true){
+                    this.Account.remarks ='Account Locked'
+                    this.Account.Amount = '0'
+                    this.Account.client_name = this.Account.name;
+                        this.selectedExchange = 'Withdraw';
+          console.log(this.Account.exchange_name)
+
+          this.addHistory(this.Account)
+
+
+                    axios.post(`api/user/update2/${this.Account.client_id}`,this.Account).then((res)=>{
+                        this.initialize();
+           
+            
+              
+            toastMixin.fire({
+                icon: 'success',
+                title : 'Success',
+                animation:true,
+                text: 'successfully saved',
+            })
+            this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
+                });
+            }else{
+                this.Account.remarks =null
+                    this.Account.Amount = '0'
+                    this.Account.client_name = this.Account.name;
+                    this.selectedExchange = 'Withdraw';
+
+          this.addHistory(this.Account)
+
+          console.log(this.Account)
+
+                    axios.post(`api/user/update2/${this.Account.client_id}`,this.Account).then((res)=>{
+                        this.initialize();
+                        
+              
+            toastMixin.fire({
+                icon: 'success',
+                title : 'Success',
+                animation:true,
+                text: 'successfully saved',
+            })
+            this.$socket.emit('newUpdate', { updateType: "ConfirmRecharge" })
+                });
+            }
+      
         },
         toggleExchange(isShow,obj = {}){
          this.tempData = {...obj}
@@ -251,7 +350,7 @@ else{
           this.tempData.client_name = this.tempData.name;
           this.tempData.Amount = this.tempData.amount;
           this.addHistory(this.tempData)
-
+console.log(this.tempData)
             axios.post(`/api/user/update3/${this.tempData.client_id}`,{Amount:this.tempData.Asset})
                 .then((res) => {
                     this.tempData = {};
@@ -292,7 +391,7 @@ else{
         }
         },
         addHistory(obj){
-            console.log(obj)
+            console.log(obj,'obj')
             if(this.selectedExchange == 'Withdraw'){
                 obj.prev_Asset = parseInt(this.tempData.Asset) + parseInt(this.tempData.amount) ;
 
@@ -313,11 +412,15 @@ else{
 
     },
 
-    async mounted(){
+    async created(){
         this.overlay = true;
         await this.initialize().then(() => {
             this.overlay = false
+
         })
+
+        this.GetUser();
+
     }
 
 }

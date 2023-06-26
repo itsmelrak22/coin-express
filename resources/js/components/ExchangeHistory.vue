@@ -20,6 +20,7 @@
                     :search="search"
                     :items="histories"
                 >
+
                 <template v-slot:[`item.exchange`]="{ item }">
           
                     <v-btn
@@ -174,7 +175,7 @@ export default {
                     text: 'Amount', align: 'start', value: 'Amount',
                 },
                 {
-                    text: 'Asset', align: 'start', value: 'Asset',
+                    text: 'Remarks', align: 'start', value: 'remarks',
                 },
                 
             ],

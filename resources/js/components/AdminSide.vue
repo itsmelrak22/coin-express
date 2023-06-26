@@ -1,8 +1,22 @@
 <template>
-    <div>
-        <h4>Welcome admin side trade order</h4>
+    <div class="table-container">
+
+<v-card>
+<v-card-text>
+  <v-text-field
+    v-model="search"
+    append-icon="mdi-magnify"
+    label="Search"
+    hide-details
+    
+  ></v-text-field>
+</v-card-text>
+</v-card>
+  
+<v-data-table height="60vh"  class="mainTable" :headers="headers" :items="tradeorders" :fixed-header="true">
+<template v-slot:item="{ item }">
             
-        <v-simple-table flat style="overflow-y: auto"  dense    :height="$vuetify.breakpoint.height - 200">
+        <!-- <v-simple-table flat style="overflow-y: auto"  dense    :height="$vuetify.breakpoint.height - 200">
             <template v-slot:default>
             <thead>
                 <tr>
@@ -26,17 +40,17 @@
                     <th  style="font-size:10px">ACTIONS</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> -->
 
-                <tr v-for="(tradeorders, index) in tradeorders" :key="index">
-                    <td style="font-size:12px">{{ tradeorders.id }}</td>
-                    <td style="font-size:12px">{{ tradeorders.User_code }}</td>
-                    <td style="font-size:12px">{{ tradeorders.user_account }}</td>
-                    <td style="font-size:12px">{{ tradeorders.contract }}</td>
+                <tr>
+                    <td style="font-size:12px">{{ item.id }}</td>
+                    <td style="font-size:12px">{{ item.User_code }}</td>
+                    <td style="font-size:12px">{{ item.user_account }}</td>
+                    <td style="font-size:12px">{{ item.contract }}</td>
                     <td style="font-size:12px">
-            <span>{{ tradeorders.type == 'sell' ? 'Down' : 'Up' }}</span>
-           <!-- <v-icon small>mdi-arrow-down</v-icon> <span>{{ tradeorders.type == 'buy' ? 'Up' : 'Down' }}</span> -->
-                        <v-chip outlined color="success" dense x-small  v-if="tradeorders.type == 'sell'">
+            <span>{{ item.type == 'sell' ? 'Down' : 'Up' }}</span>
+           <!-- <v-icon small>mdi-arrow-down</v-icon> <span>{{ item.type == 'buy' ? 'Up' : 'Down' }}</span> -->
+                        <v-chip outlined color="success" dense x-small  v-if="item.type == 'sell'">
                             Set Up
                         </v-chip>
                         
@@ -46,29 +60,47 @@
 
 
                     </td>
-                    <td style="font-size:12px">{{ tradeorders.seconds }}</td>
-                    <td style="font-size:12px">{{ tradeorders.trading }}</td>
-                    <td style="font-size:12px">{{ tradeorders.quantity }}</td>
-                    <td style="font-size:12px">{{ tradeorders.preset }}</td>
-                    <td style="font-size:12px">{{ tradeorders.result }}</td>
-                    <td style="font-size:12px">{{ tradeorders.profit }}</td>
-                    <td style="font-size:12px">{{ tradeorders.opening_price }}</td>
-                    <td style="font-size:12px">{{ tradeorders.closing_price }}</td>
-                    <td style="font-size:12px">{{ tradeorders.order_time }}</td>
-                    <td style="font-size:12px">{{ tradeorders.closing_time }}</td>
-                    <td style="font-size:12px">{{ tradeorders.complete_time }}</td>
-                    <td style="font-size:12px">{{ tradeorders.complete_time }}</td>
-                    <!-- <td>{{tradeorders.order_time}}</td>
-                <td>{{(tradeorders.created_at).slice(0, 10)}}</td> -->
-                    <td  v-if="tradeorders.complete_time == null ">
-                        <!-- v-if="tradeorders.complete_time == null " -->
-                        <v-btn class="elevation-5" x-small dark @click="winBtn(tradeorders)">WIN</v-btn>
-                        <v-btn class="elevation-5" x-small dark @click="loseBtn(tradeorders)">LOSE</v-btn>
-                    </td>
+                    <td style="font-size:12px">{{ item.seconds }}</td>
+                    <td style="font-size:12px">{{ item.trading }}</td>
+                    <td style="font-size:12px">{{ item.quantity }}</td>
+                    <td style="font-size:12px">{{ item.preset }}</td>
+                    <td style="font-size:12px">{{ item.result }}</td>
+                    <td style="font-size:12px">{{ item.profit }}</td>
+                    <td style="font-size:12px">{{ item.opening_price }}</td>
+                    <td style="font-size:12px">{{ item.closing_price }}</td>
+                    <td style="font-size:12px">{{ item.order_time }}</td>
+                    <td style="font-size:12px">{{ item.closing_time }}</td>
+                    <td style="font-size:12px">{{ item.complete_time }}</td>
+                    <td style="font-size:12px">{{ item.complete_time }}</td>
+                    <!-- <td>{{item.order_time}}</td>
+                <td>{{(item.created_at).slice(0, 10)}}</td> -->
+                <td class="sticky-last-column"  >
+              <v-btn
+                x-small
+                color="success"
+                style="font-weight: bold"
+                @click="winBtn(item)"
+                v-if="item.complete_time == null"
+              >
+                Win
+              </v-btn>
+              <v-btn
+                color="error"
+                style="font-weight: bold"
+                x-small
+                @click="loseBtn(item)"
+                v-if="item.complete_time == null"
+              >
+                Lose
+              </v-btn>
+                      </td>
                 </tr>
-            </tbody>
+                </template>
+                </v-data-table>
+            <!-- </tbody>
             </template>
-        </v-simple-table><!--end of simple table-->
+        </v-simple-table> -->
+        <!--end of simple table-->
     </div>
 </template>
 
@@ -92,7 +124,33 @@ export default {
         return {
             settimes: '',
             obj: {},
-            tradeorders :[],
+            
+      search: "",
+  
+            tradeorders :[
+                
+            ],
+            headers:[
+                { text: "Order ID",  value: "id", class: 'sticky-header' },
+          { text: "User ID",  value: "User_code", class: 'sticky-header' },
+          { text: "User Account",  value: "user_account", class: 'sticky-header' },
+          { text: "Contract",  value: "contract", class: 'sticky-header' },
+          { text: "Type",  value: "type", class: 'sticky-header' },
+          { text: "Time",  value: "seconds", class: 'sticky-header' },
+          { text: "Trading",  value: "trading", class: 'sticky-header' },
+          { text: "Quantity",  value: "quantity", class: 'sticky-header' },
+          { text: "Preset",  value: "preset", class: 'sticky-header' },
+          { text: "Result",  value: "result", class: 'sticky-header' },
+          { text: "Profit",  value: "profit", class: 'sticky-header' },
+          { text: "opening Price",  value: "opening_price", class: 'sticky-header' },
+          { text: "Close Price",  value: "closing_price", class: 'sticky-header' },
+          { text: "Order Time",  value: "order_time", class: 'sticky-header' },
+          { text: "Close Time",  value: "closing_time", class: 'sticky-header' },
+          { text: "Updated",  value: "complete_time", class: 'sticky-header' },
+          { text: "Completed Time",  value: "complete_time",  class: 'sticky-header' },
+          { text: "Actions", value: "action", sortable: false, width: "10%", class: 'sticky-header sticky-last-column'},
+
+            ]
 
             // oras:moment().format('MMMM Do YYYY, h:mm:ss a')
         }
@@ -187,23 +245,22 @@ export default {
 }
 </script>
 
-<style scoped>
-table {
-  border-collapse: collapse;
-}
-
-th {
-
-
-
-  font-size: 8px;
-
-}
-
-td {
- 
-
-font-size: 8px;
-  text-align: center;
-}
+<style >
+  .table-container {
+    position: relative;
+  }
+  
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Optional: Set the desired background color */
+    z-index: 1; /* Optional: Adjust the stacking order if needed */
+  }
+  
+  .sticky-last-column {
+    position: sticky;
+    right: 0;
+    background-color: #fff; /* Optional: Set the desired background color */
+    z-index: 1; /* Optional: Adjust the stacking order if needed */
+  }
 </style>
